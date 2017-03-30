@@ -20,7 +20,11 @@ cfg-scripts:
 cfg-gtk:
 	cp gtk/.gtkrc-2.0 ~/	
 
-cfg-term: cfg-bash cfg-tmux cfg-vim cfg-mc cfg-root
+cfg-term: cfg-terminator cfg-bash cfg-tmux cfg-vim cfg-mc cfg-root
+
+cfg-terminator:
+	mkdir -p ~/.config/terminator
+	cp -v terminator/config ~/.config/terminator
 
 cfg-bash:
 	cp bash/.bashrc ~/
