@@ -360,9 +360,9 @@ globalkeys = awful.util.table.join(
 
    -- Brightness
    awful.key({ "Control" }, "F2", function ()
-        awful.util.spawn("/home/nullptr/soft/scripts/br -i -5") end),
+        awful.util.spawn("/home/nullptr/.local/bin/br -i -5") end),
    awful.key({ "Control" }, "F3", function ()
-        awful.util.spawn("/home/nullptr/soft/scripts/br -i 5") end),
+        awful.util.spawn("/home/nullptr/.local/bin/br -i 5") end),
 
    awful.key({ modkey }, "F4", function ()
         awful.util.spawn("light-locker-command -l") end),

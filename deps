@@ -1,0 +1,20 @@
+
+# devel
+base-devel git
+
+# terminal
+terminator
+tmux mc vim htop nload bash-completion
+
+# GUI Server
+xorg-server
+
+# Display Manager
+lightdm
+lightdm-gtk-greeter
+light-locker
+
+# Window Manager
+awesome
+awesome-themes (https://aur.archlinux.org/awesome-themes-git.git)
+xcompmgr

@@ -1,0 +1,167 @@
+#! /usr/bin/python2
+
+import sys
+import subprocess
+
+devPath = '/sys/class/backlight/intel_backlight'
+maxBrPath = devPath + '/max_brightness'
+brPath = devPath + '/brightness'
+
+DEVICE = "LVDS-1"
+
+def parseArgs(*args):
+	parsedArgs = {}	
+	i = 1
+	while i < len(sys.argv):
+		arg = None
+		for j in range(len(args)):
+			if sys.argv[i] == args[j]['key']:
+				arg = args[j]
+				break
+		if arg is None:
+			i += 1
+		else:
+			if arg['len'] == 0:
+				parsedArgs[arg['key']] = None
+				i += 1
+			elif arg['len'] == 1:
+				parsedArgs[arg['key']] = sys.argv[i + 1]
+				i += 2
+	return parsedArgs
+
+
+class BrightnessController:
+	
+	def setBrightness(self, value):
+		pass
+	
+	def incBrightness(self, inc):
+		brightness = self.getBrightness()+int(inc)
+		
+		if brightness < 10 or brightness > 100:
+			return
+
+		self.setBrightness(brightness)
+
+	def getBrightness(self):
+		pass
+
+	
+class BackLightBC(BrightnessController):
+
+	def getRealBrightness(self, filePath=brPath):
+		with open(filePath, 'r') as f:
+			br = f.read()
+		return int(br)
+
+	def setRealBrightness(self, brightness, filePath=brPath):	
+		with open(filePath, 'w') as f:
+			f.write(brightness)
+
+	def getBrightness(self):
+		try:
+			maxBr = self.getRealBrightness(maxBrPath)
+			br = getRealBrightness()
+			return round(br / float(maxBr) * 100)
+		except:
+			return False
+
+	def setBrightness(self, brightness):
+		try:
+			brightness = int(brightness)	
+			if brightness < 0:
+				brightness = 0
+			if brightness > 100:
+				brightness = 100
+
+			maxBr = self.getRealBrightness(maxBrPath)
+			setRealBrightness(str(brightness * maxBr / 100))
+			return True
+		except:
+			return False
+
+
+class XRandrBC(BrightnessController):
+
+	def setBrightness(self, value):
+		try:
+			brightness = int(value)	
+			if brightness < 1:
+				brightness = 1
+			if brightness > 100:
+				brightness = 100
+
+			subprocess.check_output("xrandr --output %s --brightness %f" \
+				% (DEVICE, float(brightness)/100), shell=True)
+			return True
+		except:
+			return False
+
+	def getBrightness(self):
+		try:
+			br = float(subprocess.check_output("xrandr --verbose | grep -i brightness | cut -f2 -d ' '", shell=True))
+			return int(br * 100)
+		except:
+			return False
+
+
+class UnsupportedBC(Exception):
+	pass			
+
+
+class ComplexBC(BrightnessController):
+	def __init__(self):
+		self.bms = [BackLightBC(), XRandrBC()]
+		#self.bms = [BackLightBC()]
+
+	def setBrightness(self, value):
+		for bm in self.bms:
+			if bm.setBrightness(value):
+				return
+		
+		raise UnsupportedBC()
+
+	def getBrightness(self):
+		for bm in self.bms:
+			br = bm.getBrightness()
+			if br != False:
+				return br
+		
+		raise UnsupportedBC()
+
+
+def help():
+	return  'Usage: br [-s brightness -g]\n'\
+		'Set or get brightness value (%)\n'\
+		'-s set brightness\n'\
+		'-g get current brightness'
+
+
+def main():
+	args = parseArgs(
+		{'key': '-s', 'len': 1}, 
+		{'key': '-g', 'len': 0},
+		{'key': '-i', 'len': 1},
+	)
+
+	if len(args) == 0:
+		print help() 
+
+	else:
+		bc = ComplexBC()
+			
+		if args.has_key('-s'):
+			bc.setBrightness(args['-s'])
+
+		elif args.has_key('-g'):
+			print 'Current brightness is: %d%%' % bc.getBrightness()
+		
+		elif args.has_key('-i'):
+			bc.incBrightness(args['-i'])
+
+
+if __name__ == '__main__':
+	try:
+		main()
+	except UnsupportedBC:
+		print "Brightness controller is not supported for this system or permission denied"
