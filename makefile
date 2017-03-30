@@ -2,11 +2,11 @@
 cfg-de: cfg-dm cfg-awesome
 
 cfg-dm: cfg-img
-	sudo mkdir -p /etc/lightdm
-	sudo cp -v lightdm/* /etc/lightdm
+	- sudo mkdir -p /etc/lightdm
+	- sudo cp -v lightdm/* /etc/lightdm
 
 cfg-awesome: cfg-scripts cfg-img cfg-gtk
-	mkdir -p ~/.config/awesome
+	- mkdir -p ~/.config/awesome
 	cp -v awesome/rc.lua ~/.config/awesome
 	cp -v awesome/.xprofile ~/
 
@@ -14,7 +14,7 @@ cfg-img:
 	sudo cp img/* /usr/share/pixmaps
 	
 cfg-scripts:
-	mkdir -p ~/.local/bin
+	- mkdir -p ~/.local/bin
 	cp scripts/* ~/.local/bin
 
 cfg-gtk:
@@ -23,7 +23,7 @@ cfg-gtk:
 cfg-term: cfg-terminator cfg-bash cfg-tmux cfg-vim cfg-mc cfg-root
 
 cfg-terminator:
-	mkdir -p ~/.config/terminator
+	- mkdir -p ~/.config/terminator
 	cp -v terminator/config ~/.config/terminator
 
 cfg-bash:
@@ -38,9 +38,9 @@ cfg-vim:
 	sudo cp vim/.vimrc /root
 
 cfg-mc:
-	mkdir -p ~/.config/mc
+	- mkdir -p ~/.config/mc
 	cp -v mc/* ~/.config/mc
-	sudo mkdir /root/.config/mc
+	- sudo mkdir /root/.config/mc
 	cp -v mc/* /root/.config/mc
 
 cfg-root:
