@@ -41,7 +41,7 @@ end
 -- beautiful.init(awful.util.get_themes_dir() .. "default/theme.lua")
 --beautiful.init(awful.util.get_themes_dir() .. "rbown/theme.lua")
 beautiful.init(awful.util.get_themes_dir() .. "snow/theme.lua")
-beautiful.wallpaper = "/home/nullptr/Pictures/arch2.png"
+beautiful.wallpaper = "/usr/share/pixmaps/arch2.png"
 -- This is used later as the default terminal and editor to run.
 terminal = "terminator"
 editor = os.getenv("EDITOR") or "vim"
