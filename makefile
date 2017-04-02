@@ -3,19 +3,29 @@ cfg-de: cfg-dm cfg-awesome
 
 cfg-dm: cfg-img
 	- sudo mkdir -p /etc/lightdm
+	
 	- sudo cp /etc/lightdm/lightdm.conf /etc/lightdm/lightdm.conf.orig
-	- sudo cp /etc/lightdm/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf.orig
-	- sudo cp -v lightdm/{lightdm.conf,lightdm-gtk-greeter.conf} /etc/lightdm
+	- sudo cp -v lightdm/lightdm.conf /etc/lightdm
+	
+	- sudo cp /etc/lightdm/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf.orig	
+	- sudo cp -v lightdm/lightdm-gtk-greeter.conf /etc/lightdm
 
 cfg-awesome: cfg-scripts cfg-img cfg-gtk
 	- mkdir -p ~/.config/awesome
-	- cp ~/.config/awesome/rc.lua ~/.config/awesome/rc.lua.orig
+	
+	sudo cp -vr awesome/snow /usr/share/awesome/themes/
+		
+	cp -vr awesome/debian ~/.config/awesome
+	
+	- cp -v ~/.xsessionrc ~/.xsessionrc.orig        
+	cp -v awesome/.xsessionrc ~/
+	
+	- cp -v ~/.config/awesome/rc.lua ~/.config/awesome/rc.lua.orig
 	cp -v awesome/rc.lua ~/.config/awesome
-	- cp ~/.xprofile ~/.xprofile.orig
-	cp -v awesome/.xprofile ~/
 
 cfg-img:
-	sudo cp img/* /usr/share/pixmaps
+	mkdir -p ~/img
+	cp -Pv img/* ~/img
 	
 cfg-scripts:
 	- mkdir -p ~/.local/bin

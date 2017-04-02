@@ -7,7 +7,7 @@ devPath = '/sys/class/backlight/intel_backlight'
 maxBrPath = devPath + '/max_brightness'
 brPath = devPath + '/brightness'
 
-DEVICE = "LVDS-1"
+DEVICE = "LVDS1"
 
 def parseArgs(*args):
 	parsedArgs = {}	
