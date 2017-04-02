@@ -1,13 +1,13 @@
 
+# system
+dhcpcd5 iptables wpasupplicant
+
 # devel
-base-devel git
+build-essentials git git-gui gitk
 
 # terminal
 terminator
 tmux mc vim htop nload bash-completion
-
-# GUI Server
-xorg-server
 
 # Display Manager
 lightdm
@@ -16,5 +16,4 @@ light-locker
 
 # Window Manager
 awesome
-awesome-themes (https://aur.archlinux.org/awesome-themes-git.git)
-xcompmgr
+#xcompmgr

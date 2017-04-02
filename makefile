@@ -1,4 +1,6 @@
 
+cfg: cfg-term cfg-de
+
 cfg-de: cfg-dm cfg-awesome
 
 cfg-dm: cfg-img
@@ -63,3 +65,9 @@ cfg-mc:
 
 cfg-root:
 	sudo cp root/makefile /root
+	
+	sudo cp -vr root/*.service /etc/systemd/system/
+	
+	sudo mkdir -p /etc/iptables
+	sudo cp root/iptables.rules /etc/iptables
+	sudo systemctl enable iptables
