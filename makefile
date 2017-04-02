@@ -49,7 +49,7 @@ cfg-mc:
 	- mkdir -p ~/.config/mc
 	cp -v mc/* ~/.config/mc
 	- sudo mkdir /root/.config/mc
-	cp -v mc/* /root/.config/mc
+	sudo cp -v mc/* /root/.config/mc
 
 cfg-root:
 	sudo cp root/makefile /root
