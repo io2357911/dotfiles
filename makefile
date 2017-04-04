@@ -1,5 +1,5 @@
 
-cfg: cfg-term cfg-de
+cfg: cfg-term cfg-de cfg-soft
 
 cfg-de: cfg-dm cfg-awesome
 
@@ -36,6 +36,9 @@ cfg-scripts:
 cfg-gtk:
 	- cp ~/.gtkrc-2.0 ~/.gtkrc-2.0.orig
 	cp gtk/.gtkrc-2.0 ~/	
+
+cfg-soft:
+	sudo cp -vr wps/ms-truetype /usr/share/fonts
 
 cfg-term: cfg-terminator cfg-bash cfg-tmux cfg-vim cfg-mc cfg-root
 
