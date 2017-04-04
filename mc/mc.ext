@@ -595,9 +595,9 @@ shell/i/.tex
 	Include=editor
 
 # DjVu
-regex/i/\.djvu?$
-	Open=/usr/lib/mc/ext.d/doc.sh open djvu
-	View=%view{ascii} /usr/lib/mc/ext.d/doc.sh view djvu
+#regex/i/\.djvu?$
+#	Open=/usr/lib/mc/ext.d/doc.sh open djvu
+#	View=%view{ascii} /usr/lib/mc/ext.d/doc.sh view djvu
 
 # Comic Books
 regex/i/\.cb[zr]$
@@ -746,8 +746,8 @@ regex/i/\.(png|jpg)$
         Open=/usr/bin/viewnior %f > /dev/null 2>&1 &
 
 # pdf
-regex/i/\.(pdf)$
-        Open=/usr/bin/qpdfview %f > /dev/null 2>&1 &
+regex/i/\.(pdf|djvu)$
+        Open=/usr/bin/qpdfview --unique %f > /dev/null 2>&1 &
 
 # office
 regex/i/\.(doc|docx)$
