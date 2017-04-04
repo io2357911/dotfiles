@@ -1,6 +1,10 @@
 
 cfg: cfg-term cfg-de cfg-soft
 
+
+# --- desktop environment configs ---
+
+
 cfg-de: cfg-dm cfg-awesome
 
 cfg-dm: cfg-img
@@ -40,6 +44,10 @@ cfg-gtk:
 cfg-soft:
 	sudo cp -vr wps/ms-truetype /usr/share/fonts
 
+
+# --- terminal tweaks configs ---
+
+
 cfg-term: cfg-terminator cfg-bash cfg-tmux cfg-vim cfg-mc cfg-root
 
 cfg-terminator:
@@ -74,3 +82,25 @@ cfg-root:
 	sudo mkdir -p /etc/iptables
 	sudo cp root/iptables.rules /etc/iptables
 	sudo systemctl enable iptables
+
+
+# --- server configs ---
+
+
+cfg-srv: cfg-ssh cfg-ddclient cfg-smb cfg-minidlna cfg-trans
+
+cfg-ssh:
+	sudo cp -v ssh/sshd_config /etc/ssh
+
+cfg-ddclient:
+	sudo cp -v ddclient/ddclient.conf /etc
+
+cfg-smb:
+	sudo cp -v smb/smb.conf /etc/samba/smb.conf
+
+cfg-minidlna:
+	sudo cp -v minidlna/minidlna.conf /etc
+
+cfg-trans:
+	sudo cp -v transmission-daemon/settings.json /etc/transmission-daemon/settings.json
+
