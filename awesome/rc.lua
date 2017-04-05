@@ -55,13 +55,14 @@ modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 layouts =
 {
+    awful.layout.suit.max, 
     awful.layout.suit.floating,
     --awful.layout.suit.tile,
     --awful.layout.suit.tile.left,
     --awful.layout.suit.tile.bottom,
     --awful.layout.suit.tile.top,
     --awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
+    --awful.layout.suit.fair.horizontal,
     --awful.layout.suit.spiral,
     --awful.layout.suit.spiral.dwindle,
     --awful.layout.suit.max,
@@ -75,7 +76,7 @@ layouts =
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ "1:sys", "2:net", "3:tag", "4:tag", "5:tag", "6:tag", "7:tag", "8:tag", "9:tag" }, s, layouts[1])
+    tags[s] = awful.tag({ "1:sys", "2:net", "3:tag", "4:tag", "5:tag", "6:tag", "7:tag" }, s, layouts[1])
 end
 -- }}}
 
@@ -282,9 +283,9 @@ globalkeys = awful.util.table.join(
 
    -- Brightness
    awful.key({ "Control" }, "F2", function ()
-        awful.util.spawn("/home/nullptr-deb/.local/bin/br -i -5") end),
+        awful.util.spawn("xbacklight -dec 5") end),
    awful.key({ "Control" }, "F3", function ()
-        awful.util.spawn("/home/nullptr-deb/.local/bin/br -i 5") end),
+        awful.util.spawn("xbacklight -inc 5") end),
 
    awful.key({ modkey }, "F4", function ()
         awful.util.spawn("light-locker-command -l") end),
@@ -394,7 +395,7 @@ awful.rules.rules = {
 -- Signal function to execute when a new client appears.
 client.add_signal("manage", function (c, startup)
     -- Add a titlebar
-    -- awful.titlebar.add(c, { modkey = modkey })
+    awful.titlebar.add(c, { modkey = modkey })
 
     -- Enable sloppy focus
     c:add_signal("mouse::enter", function(c)
@@ -407,7 +408,7 @@ client.add_signal("manage", function (c, startup)
     if not startup then
         -- Set the windows at the slave,
         -- i.e. put it at the end of others instead of setting it master.
-        -- awful.client.setslave(c)
+        awful.client.setslave(c)
 
         -- Put windows in a smart way, only if they does not set an initial position.
         if not c.size_hints.user_position and not c.size_hints.program_position then
@@ -419,10 +420,10 @@ end)
 
 client.add_signal("focus", function(c) 
 	c.border_color = beautiful.border_focus 
-	c.opacity = 0.95
+	--c.opacity = 1
 end)
 client.add_signal("unfocus", function(c) 
 	c.border_color = beautiful.border_normal 
-	c.opacity = 0.95
+	--c.opacity = 1
 end)
 -- }}}

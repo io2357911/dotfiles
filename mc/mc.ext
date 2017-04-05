@@ -759,7 +759,7 @@ regex/i/\.(xls|xlsx)$
 
 # Default target for anything not described above
 default/*
-	Open=/usr/bin/vim %f
+	Open=
 	View=
 
 ### EOF ###

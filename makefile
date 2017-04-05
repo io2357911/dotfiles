@@ -44,6 +44,10 @@ cfg-gtk:
 cfg-soft:
 	sudo cp -vr wps/ms-truetype /usr/share/fonts
 
+cfg-quartus:
+	mkdir -p ~/.local/bin
+	cp quartus/quartus ~/.local/bin/quartus
+
 
 # --- terminal tweaks configs ---
 
