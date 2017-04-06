@@ -47,6 +47,9 @@ cfg-soft:
 cfg-quartus:
 	mkdir -p ~/.local/bin
 	cp quartus/quartus ~/.local/bin/quartus
+	
+	sudo cp -v quartus/51-usbblaster.rules /etc/udev/rules.d
+	sudo udevadm control --reload-rules
 
 
 # --- terminal tweaks configs ---

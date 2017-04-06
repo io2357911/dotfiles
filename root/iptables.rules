@@ -14,5 +14,19 @@
 -A INPUT -p udp -j REJECT --reject-with icmp-port-unreachable
 -A INPUT -p tcp -j REJECT --reject-with tcp-reset
 -A INPUT -j REJECT --reject-with icmp-proto-unreachable
+# ssh
+#-A TCP -p tcp --dport 7722 -j ACCEPT
+# minidlna
+#-A UDP -p udp --dport 1900 -j ACCEPT
+#-A TCP -p tcp --dport 8200 -j ACCEPT
+# transmission
+#-A TCP -p tcp --dport 9091 -j ACCEPT
+# samba
+#-A UDP -p udp --dport 137 -j ACCEPT
+#-A UDP -p udp --dport 138 -j ACCEPT
+#-A TCP -p tcp --dport 139 -j ACCEPT
+#-A TCP -p tcp --dport 445 -j ACCEPT
+# syslog-ng for incoming logs
+#-A UDP -p udp --dport 514 -j ACCEPT
 COMMIT
 # Completed on Wed Mar 15 19:50:01 2017
