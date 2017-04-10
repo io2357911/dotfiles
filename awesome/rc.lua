@@ -10,6 +10,8 @@ require("naughty")
 -- Load Debian menu entries
 require("debian.menu")
 
+require("tweaks")
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -76,7 +78,7 @@ layouts =
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ "1:sys", "2:net", "3:tag", "4:tag", "5:tag", "6:tag", "7:tag" }, s, layouts[1])
+    tags[s] = awful.tag({ "1:sys", "2:net", "3:tag", "4:tag" }, s, layouts[1])
 end
 -- }}}
 
@@ -100,8 +102,13 @@ mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
 -- }}}
 
 -- {{{ Wibox
+
+
+--kbd = awful.widget.keyboardlayout()
+--awful.widget.keyboardlayout:new()
+
 -- Create a textclock widget
-mytextclock = awful.widget.textclock({ align = "right" })
+--mytextclock = awful.widget.textclock({ align = "right" })
 
 -- Create a systray
 mysystray = widget({ type = "systray" })
@@ -181,7 +188,9 @@ for s = 1, screen.count() do
             layout = awful.widget.layout.horizontal.leftright
         },
         mylayoutbox[s],
-        mytextclock,
+	tweaks.widget.clock,
+	tweaks.widget.locale,
+	tweaks.widget.power,
         s == 1 and mysystray or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
@@ -283,9 +292,9 @@ globalkeys = awful.util.table.join(
 
    -- Brightness
    awful.key({ "Control" }, "F2", function ()
-        awful.util.spawn("xbacklight -dec 5") end),
+        awful.util.spawn("xbacklight -dec 2") end),
    awful.key({ "Control" }, "F3", function ()
-        awful.util.spawn("xbacklight -inc 5") end),
+        awful.util.spawn("xbacklight -inc 2") end),
 
    awful.key({ modkey }, "F4", function ()
         awful.util.spawn("light-locker-command -l") end),

@@ -28,6 +28,7 @@ cfg-awesome: cfg-scripts cfg-img cfg-gtk
 	
 	- cp -v ~/.config/awesome/rc.lua ~/.config/awesome/rc.lua.orig
 	cp -v awesome/rc.lua ~/.config/awesome
+	cp -v awesome/tweaks.lua ~/.config/awesome
 
 cfg-img:
 	mkdir -p ~/img
