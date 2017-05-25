@@ -32,7 +32,8 @@ cfg-awesome: cfg-scripts cfg-img cfg-gtk
 
 cfg-i3wm:
 	mkdir -p ~/.i3 
-	cp i3wm/config ~/.i3/config
+	cp -v i3wm/config ~/.i3/config
+	cp -v i3wm/.i3status.conf ~/.i3status.conf
 
 cfg-img:
 	mkdir -p ~/img
