@@ -5,7 +5,7 @@ cfg: cfg-term cfg-de cfg-soft
 # --- desktop environment configs ---
 
 
-cfg-de: cfg-dm cfg-awesome
+cfg-de: cfg-dm cfg-awesome cfg-i3wm
 
 cfg-dm: cfg-img
 	- sudo mkdir -p /etc/lightdm
@@ -29,6 +29,10 @@ cfg-awesome: cfg-scripts cfg-img cfg-gtk
 	- cp -v ~/.config/awesome/rc.lua ~/.config/awesome/rc.lua.orig
 	cp -v awesome/rc.lua ~/.config/awesome
 	cp -v awesome/tweaks.lua ~/.config/awesome
+
+cfg-i3wm:
+	mkdir -p ~/.i3 
+	cp i3wm/config ~/.i3/config
 
 cfg-img:
 	mkdir -p ~/img
