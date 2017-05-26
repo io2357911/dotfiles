@@ -17,13 +17,18 @@ light-locker
 # Window Manager
 awesome
 #xcompmgr
+i3 
+	suckless-tools
+	i3blocks
+
+
 
 # images
 viewnior
 
 # office
 wps-office
-ttf-mscorefonts-installer
+	ttf-mscorefonts-installer
 qpdfview
 
 # quartus

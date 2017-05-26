@@ -1,0 +1,11 @@
+#! /bin/bash
+
+code=$(xset -q|grep LED| awk '{ print $10 }')
+case $code in
+	0000100[0-9])
+		echo ru
+		;;
+	*) 
+		echo en
+		;;
+esac	

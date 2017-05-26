@@ -30,10 +30,15 @@ cfg-awesome: cfg-scripts cfg-img cfg-gtk
 	cp -v awesome/rc.lua ~/.config/awesome
 	cp -v awesome/tweaks.lua ~/.config/awesome
 
+#battery  config  .i3blocks.conf  .i3status.conf  kbd
 cfg-i3wm:
 	mkdir -p ~/.i3 
 	cp -v i3wm/config ~/.i3/config
 	cp -v i3wm/.i3status.conf ~/.i3status.conf
+	
+	cp -v i3wm/.i3blocks.conf ~/.i3blocks.conf
+	cp -v i3wm/battery ~/.i3/battery
+	cp -v i3wm/kbd ~/.i3/kbd
 
 cfg-img:
 	mkdir -p ~/img
