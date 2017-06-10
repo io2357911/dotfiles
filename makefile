@@ -81,6 +81,9 @@ cfg-bash:
 cfg-tmux:
 	cp tmux/.tmux.conf ~/
 
+	mkdir -p ~/.tmux
+	git clone https://github.com/tmux-plugins/tmux-resurrect.git ~/.tmux/resurrect
+
 cfg-vim:
 	- cp ~/.vimrc ~/.vimrc.orig
 	cp vim/.vimrc ~/
