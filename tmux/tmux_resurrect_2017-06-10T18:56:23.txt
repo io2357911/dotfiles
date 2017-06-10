@@ -1,0 +1,5 @@
+pane	0	0	:sys	1	:*	0	:/home/nullptr-deb	1	mc	:mc
+pane	0	0	:sys	1	:*	1	:/home/nullptr-deb	0	htop	:htop
+pane	0	0	:sys	1	:*	2	:/home/nullptr-deb	0	nload	:nload
+window	0	0	1	:*	f5a6,170x47,0,0{85x47,0,0,1,84x47,86,0[84x30,86,0,2,84x16,86,31,3]}
+state	0	0

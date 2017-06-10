@@ -86,6 +86,9 @@ cfg-tmux:
 	cd ~/.tmux/resurrect ; git checkout 3a31bfbbb835c3d32f25702182cb5deab2a612ae
 	cp -v tmux/fix_first_window_name.patch ~/.tmux/resurrect
 	cd ~/.tmux/resurrect ; patch -p1 < fix_first_window_name.patch
+	
+	cp -Pv tmux/last ~/.tmux/resurrect  
+	cp -v tmux/tmux_resurrect_2017-06-10T18:56:23.txt ~/.tmux/resurrect
 
 cfg-vim:
 	- cp ~/.vimrc ~/.vimrc.orig
