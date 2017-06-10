@@ -80,9 +80,12 @@ cfg-bash:
 
 cfg-tmux:
 	cp tmux/.tmux.conf ~/
-
+	
 	mkdir -p ~/.tmux
 	git clone https://github.com/tmux-plugins/tmux-resurrect.git ~/.tmux/resurrect
+	cd ~/.tmux/resurrect ; git checkout 3a31bfbbb835c3d32f25702182cb5deab2a612ae
+	cp -v tmux/fix_first_window_name.patch ~/.tmux/resurrect
+	cd ~/.tmux/resurrect ; patch -p1 < fix_first_window_name.patch
 
 cfg-vim:
 	- cp ~/.vimrc ~/.vimrc.orig
