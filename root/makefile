@@ -30,7 +30,7 @@ SHARE_HOST=192.168.0.26/share
 SHARE_PATH=/mnt/smb-share
 
 mount-smb-share:
-	@ mount -t cifs -o username=pi,password=2662 //$(SHARE_HOST) $(SHARE_PATH)
+	@ mount -t cifs -o username=nullptr,password=2662 //$(SHARE_HOST) $(SHARE_PATH)
 
 umount-smb-share:
 	umount $(SHARE_PATH)
@@ -72,3 +72,16 @@ power-verbose:
 power-info:
 	upower -i $(shell upower -e | grep BAT) | grep --color=never -E "state|to full|to empty|percentage"
 
+
+# --- Mount USB ---
+
+mount-usb:
+	sudo mount /dev/sdb1 /mnt/usb -o uid=nullptr,gid=nullptr
+
+umount-usb:
+	sudo umount /mnt/usb
+
+# --- Updates ---
+update:
+	apt-get update
+	apt-get upgrade
