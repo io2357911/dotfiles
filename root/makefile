@@ -2,27 +2,29 @@
 # ----- Wireless -----
 
 wlan-up:
-	ip link set wlan0 up
-	systemctl start wpa_supplicant@wlan0
+	sudo ip link set wlan0 up
+	sudo systemctl start wpa_supplicant@wlan0
 
 wlan-down:
-	systemctl stop wpa_supplicant@wlan0
-	ip link set wlan0 down
+	sudo systemctl stop wpa_supplicant@wlan0
+	sudo ip link set wlan0 down
 
 wlan-scan:
-	ip link set wlan0 up
-	iw dev wlan0 scan | grep SSID
+	sudo ip link set wlan0 up
+	sudo iw dev wlan0 scan | grep SSID
 
 wlan-set:
-	ln -sf /etc/wpa_supplicant/wpa_supplicant-$(SSID).conf /etc/wpa_supplicant/wpa_supplicant-wlan0.conf
+	sudo ln -sf /etc/wpa_supplicant/wpa_supplicant-$(SSID).conf /etc/wpa_supplicant/wpa_supplicant-wlan0.conf
 
 wlan-add:
-	wpa_passphrase '$(SSID)' '$(PASS)' > /etc/wpa_supplicant/wpa_supplicant-$(SSID).conf
+	sudo wpa_passphrase '$(SSID)' '$(PASS)' > /etc/wpa_supplicant/wpa_supplicant-$(SSID).conf
 	$(MAKE) wlan-set
 
 wlan-list:
 	cat /etc/wpa_supplicant/wpa_supplicant-*.conf | grep ssid
 
+lan-scan:
+	sudo arp-scan -l
 
 # --- Share ---
 
@@ -30,10 +32,10 @@ SHARE_HOST=192.168.0.26/share
 SHARE_PATH=/mnt/smb-share
 
 mount-smb-share:
-	@ mount -t cifs -o username=nullptr,password=2662 //$(SHARE_HOST) $(SHARE_PATH)
+	@ sudo mount -t cifs -o username=nullptr,password=2662 //$(SHARE_HOST) $(SHARE_PATH)
 
 umount-smb-share:
-	umount $(SHARE_PATH)
+	sudo umount $(SHARE_PATH)
 
 # --- Backups ---
 
@@ -41,10 +43,10 @@ BACKUPS_HOST=192.168.0.3/backups
 BACKUPS_PATH=/mnt/smb-backups
 
 mount-smb-backups:
-	@ mount -t cifs -o username=nullptr,password=2662 //$(BACKUPS_HOST) $(BACKUPS_PATH)
+	@ sudo mount -t cifs -o username=nullptr,password=2662 //$(BACKUPS_HOST) $(BACKUPS_PATH)
 
 umount-smb-backups:
-	umount $(BACKUPS_PATH)
+	sudo umount $(BACKUPS_PATH)
 
 
 # --- Spkb Share ---
@@ -83,5 +85,17 @@ umount-usb:
 
 # --- Updates ---
 update:
-	apt-get update
-	apt-get upgrade
+	sudo apt-get update
+	sudo apt-get upgrade
+
+
+# --- Power ---
+off:
+	-systemctl poweroff 
+lock:
+	-light-locker-command -l
+sleep:
+	-systemctl suspend
+
+reboot:
+	-systemctl reboot
