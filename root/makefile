@@ -69,10 +69,10 @@ umount-phone:
 # --- Battery ---
 
 power-verbose:
-	upower -i $(shell upower -e | grep BAT)
+	sudo upower -i $(shell upower -e | grep BAT)
 	
 power-info:
-	upower -i $(shell upower -e | grep BAT) | grep --color=never -E "state|to full|to empty|percentage"
+	sudo upower -i $(shell upower -e | grep BAT) | grep --color=never -E "state|to full|to empty|percentage"
 
 
 # --- Mount USB ---
@@ -82,6 +82,14 @@ mount-usb:
 
 umount-usb:
 	sudo umount /mnt/usb
+
+mount-ssh:
+	sshfs srv.remote:/home/nullptr /mnt/srv
+umount-ssh:
+	sudo umount /mnt/srv
+
+mount-cdrom:
+	sudo mount -o loop -t iso9660 /dev/sr0 /mnt/cdrom
 
 # --- Updates ---
 update:
