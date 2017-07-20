@@ -39,6 +39,9 @@ cfg-i3wm:
 	cp -v i3wm/.i3blocks.conf ~/.i3blocks.conf
 	cp -v i3wm/battery ~/.i3/battery
 	cp -v i3wm/kbd ~/.i3/kbd
+	
+	-cp -v ~/.xsessionrc ~/.xsessionrc.orig        
+	cp -v i3w/.xsessionrc ~/
 
 cfg-img:
 	mkdir -p ~/img
@@ -77,6 +80,7 @@ cfg-bash:
 	- cp ~/.bashrc ~/.bashrc.orig
 	cp bash/.bashrc ~/
 	sudo cp bash/.bashrc /root	
+	cp bash/makefile ~/
 
 cfg-tmux:
 	cp tmux/.tmux.conf ~/
@@ -102,8 +106,6 @@ cfg-mc:
 	sudo cp -v mc/* /root/.config/mc
 
 cfg-root:
-	sudo cp root/makefile /root
-	
 	sudo cp -vr root/*.service /etc/systemd/system/
 	
 	sudo mkdir -p /etc/iptables

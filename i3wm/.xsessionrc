@@ -1,0 +1,4 @@
+#xcompmgr -c &
+light-locker --lock-on-suspend &
+#feh --bg-scale ~/img/background
+feh --bg-scale /usr/share/images/desktop-base/desktop-background
