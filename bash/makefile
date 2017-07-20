@@ -114,15 +114,24 @@ change-background:
 add-background:
 	sudo cp $V /usr/share/images/desktop-base/$V
 	sudo update-alternatives --install /usr/share/images/desktop-base/desktop-background desktop-background /usr/share/images/desktop-base/$V 50	
+remove-background:
+	sudo update-alternatives --remove desktop-background /usr/share/images/desktop-base/$V
+	sudo rm /usr/share/images/desktop-base/$V
 
 change-foreground:
 	sudo update-alternatives --config desktop-grub
 add-foreground:
 	sudo cp $V /usr/share/images/desktop-base/$V
 	sudo update-alternatives --install /usr/share/images/desktop-base/desktop-grub desktop-grub /usr/share/images/desktop-base/$V 50
+remove-foreground:
+	sudo update-alternatives --remove desktop-grub /usr/share/images/desktop-base/$V
+	sudo rm /usr/share/images/desktop-base/$V
 
 change-user-logo:
 	sudo update-alternatives --config user-logo
 add-user-logo:
 	sudo cp $V /usr/share/images/desktop-base/$V
 	sudo update-alternatives --install /usr/share/images/desktop-base/user-logo user-logo /usr/share/images/desktop-base/$V 50
+remove-user-logo:
+	sudo update-alternatives --remove user-logo /usr/share/images/desktop-base/$V
+	sudo rm /usr/share/images/desktop-base/$V
