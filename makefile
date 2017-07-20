@@ -42,6 +42,9 @@ cfg-i3wm:
 	
 	-cp -v ~/.xsessionrc ~/.xsessionrc.orig        
 	cp -v i3w/.xsessionrc ~/
+	
+	sudo mkdir -pv /etc/X11/xorg.conf.d/
+	sudo cp i3wm/10-monitor.conf /etc/X11/xorg.conf.d/
 
 cfg-img:
 	mkdir -p ~/img

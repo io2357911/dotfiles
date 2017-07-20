@@ -135,3 +135,11 @@ add-user-logo:
 remove-user-logo:
 	sudo update-alternatives --remove user-logo /usr/share/images/desktop-base/$V
 	sudo rm /usr/share/images/desktop-base/$V
+
+# --- Monitor ---
+monitor-up:
+	xrandr --output HDMI1 --auto --right-of LVDS1
+	feh --bg-scale /usr/share/images/desktop-base/desktop-background
+monitor-down:
+	xrandr --output HDMI1 --off
+
