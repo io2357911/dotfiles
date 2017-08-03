@@ -49,6 +49,9 @@ cfg-i3wm:
 	
 	sudo mkdir -pv /etc/X11/xorg.conf.d/
 	sudo cp i3wm/10-monitor.conf /etc/X11/xorg.conf.d/
+	
+	sudo cp i3wm/i3lock.service /etc/systemd/system/
+	sudo systemctl enable i3lock.service
 
 cfg-img:
 	mkdir -p ~/img
