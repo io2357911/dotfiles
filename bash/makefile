@@ -101,7 +101,7 @@ update:
 off:
 	-systemctl poweroff 
 lock:
-	-light-locker-command -l
+	-i3lock -i ~/img/lock.png
 sleep:
 	-systemctl suspend
 reboot:

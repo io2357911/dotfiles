@@ -10,12 +10,13 @@ terminator
 tmux mc vim htop nload bash-completion
 
 # Display Manager
-lightdm
-lightdm-gtk-greeter
-light-locker
+#lightdm
+#lightdm-gtk-greeter
+#light-locker
+slim
 
 # Window Manager
-awesome
+#awesome
 #xcompmgr
 i3 
 	suckless-tools
