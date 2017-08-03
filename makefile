@@ -7,7 +7,7 @@ cfg: cfg-term cfg-de cfg-soft
 
 cfg-de: cfg-dm cfg-awesome cfg-i3wm
 
-cfg-dm: cfg-img
+cfg-dm-old: cfg-img
 	- sudo mkdir -p /etc/lightdm
 	
 	- sudo cp /etc/lightdm/lightdm.conf /etc/lightdm/lightdm.conf.orig
@@ -15,6 +15,10 @@ cfg-dm: cfg-img
 	
 	- sudo cp /etc/lightdm/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf.orig	
 	- sudo cp -v lightdm/lightdm-gtk-greeter.conf /etc/lightdm
+
+cfg-dm:
+	sudo cp -rv slim/slim.conf /etc/slim.conf
+	sudo cp -rv slim/nullptr /usr/share/slim/themes/
 
 cfg-awesome: cfg-scripts cfg-img cfg-gtk
 	- mkdir -p ~/.config/awesome
