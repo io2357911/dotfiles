@@ -1,6 +1,6 @@
 
 # system
-dhcpcd5 iptables wpasupplicant
+dhcpcd5 iptables wpasupplicant xbacklight dbus-x11 arp-scan iw 
 
 # devel
 build-essentials git git-gui gitk
