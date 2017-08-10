@@ -112,10 +112,10 @@ cfg-vim:
 	sudo cp vim/.vimrc /root
 
 cfg-mc:
-	- mkdir -p ~/.config/mc
+	-mkdir -p ~/.config/mc
 	cp -v mc/* ~/.config/mc
-	- sudo mkdir /root/.config/mc
-	sudo cp -v mc/* /root/.config/mc
+	-sudo mkdir /root/.config/mc
+	-sudo cp -v mc/* /root/.config/mc
 
 cfg-root:
 	sudo cp -vr root/*.service /etc/systemd/system/
