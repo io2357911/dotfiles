@@ -149,6 +149,8 @@ monitor-down:
 
 # --- Backups ---
 
+V=srv.local:/home/nullptr
+
 backup: backup-store
 backup-store: backup-store-proj
 backup-restore: backup-restore-proj
@@ -161,12 +163,12 @@ backup-restore-proj:
 # makes directory backup store
 # usage: $(call _backup_store, directory)
 define _backup_store
-	rsync -azv --delete-during -e "ssh -o Compression=no" --exclude-from=.rsync-ignore.list $1/ srv.local:/home/nullptr/$1/
+	rsync -av --delete-during -e "ssh -o Compression=no" --exclude-from=.rsync-ignore.list $1/ $V/$1/
 endef
 
 # makes directory backup restore
 # usage: $(call _backup_restore, directory)
 define _backup_restore
-	rsync -azv -e "ssh -o Compression=no" --exclude-from=.rsync-ignore.list srv.local:/home/nullptr/$1/ $1/
+	rsync -av -e "ssh -o Compression=no" --exclude-from=.rsync-ignore.list $V/$1/ $1/
 endef
 
