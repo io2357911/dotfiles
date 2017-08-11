@@ -5,8 +5,8 @@ poky/build/tmp*
 poky/build/bitbake.lock
 buildroot*/output*
 buildroot*/dl*
-istok-stand/*
-intercom/intercom/*
-avionics/avionics/*
-tracker/tracker/*
-misc/cfgs/*
+istok-stand/*/build*
+intercom/intercom/*/build*
+avionics/avionics/*/build*
+tracker/tracker/*/build*
+#misc/cfgs/*
