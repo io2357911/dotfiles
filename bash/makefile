@@ -17,7 +17,8 @@ wlan-set:
 	sudo ln -sf /etc/wpa_supplicant/wpa_supplicant-$(SSID).conf /etc/wpa_supplicant/wpa_supplicant-wlan0.conf
 
 wlan-add:
-	sudo wpa_passphrase '$(SSID)' '$(PASS)' > /etc/wpa_supplicant/wpa_supplicant-$(SSID).conf
+	wpa_passphrase '$(SSID)' '$(PASS)' > /tmp/wpa_supplicant-$(SSID).conf
+	sudo mv /tmp/wpa_supplicant-$(SSID).conf /etc/wpa_supplicant/wpa_supplicant-$(SSID).conf
 	$(MAKE) wlan-set
 
 wlan-list:
@@ -108,10 +109,13 @@ reboot:
 	-systemctl reboot
 
 # --- Wallpapers ---
+img-prepare:
+	sudo mkdir -p /usr/share/images/desktop-base/
+
 change-background:
 	sudo update-alternatives --config desktop-background
 	feh --bg-scale /usr/share/images/desktop-base/desktop-background
-add-background:
+add-background: img-prepare
 	sudo cp $V /usr/share/images/desktop-base/$V
 	sudo update-alternatives --install /usr/share/images/desktop-base/desktop-background desktop-background /usr/share/images/desktop-base/$V 50	
 remove-background:
@@ -120,7 +124,7 @@ remove-background:
 
 change-foreground:
 	sudo update-alternatives --config desktop-grub
-add-foreground:
+add-foreground: img-prepare
 	sudo cp $V /usr/share/images/desktop-base/$V
 	sudo update-alternatives --install /usr/share/images/desktop-base/desktop-grub desktop-grub /usr/share/images/desktop-base/$V 50
 remove-foreground:
@@ -129,7 +133,7 @@ remove-foreground:
 
 change-user-logo:
 	sudo update-alternatives --config user-logo
-add-user-logo:
+add-user-logo: img-prepare
 	sudo cp $V /usr/share/images/desktop-base/$V
 	sudo update-alternatives --install /usr/share/images/desktop-base/user-logo user-logo /usr/share/images/desktop-base/$V 50
 remove-user-logo:
@@ -143,3 +147,10 @@ monitor-up:
 monitor-down:
 	xrandr --output HDMI1 --off
 
+# --- Backups ---
+
+backup: backup-store
+backup-store:
+	rsync -azv --delete-during -e "ssh -o Compression=no" --exclude-from=.rsync-ignore.list proj/ srv.local:/home/nullptr/proj/
+backup-restore:
+	rsync -azv -e "ssh -o Compression=no" --exclude-from=.rsync-ignore.list srv.local:/home/nullptr/proj/ proj/

@@ -1,0 +1,12 @@
+poky/build/cache*
+poky/build/downloads*
+poky/build/sstate-cache*
+poky/build/tmp*
+poky/build/bitbake.lock
+buildroot*/output*
+buildroot*/dl*
+istok-stand/*
+intercom/intercom/*
+avionics/avionics/*
+tracker/tracker/*
+misc/cfgs/*

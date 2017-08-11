@@ -80,7 +80,7 @@ cfg-quartus:
 # --- terminal tweaks configs ---
 
 
-cfg-term: cfg-terminator cfg-bash cfg-tmux cfg-vim cfg-mc cfg-root
+cfg-term: cfg-terminator cfg-bash cfg-tmux cfg-vim cfg-mc cfg-root cfg-rsync
 
 cfg-terminator:
 	- mkdir -p ~/.config/terminator
@@ -124,6 +124,8 @@ cfg-root:
 	sudo cp root/iptables.rules /etc/iptables
 	sudo systemctl enable iptables
 
+cfg-rsync:
+	cp -v rsync/.rsync-ignore.list ~/
 
 # --- server configs ---
 
