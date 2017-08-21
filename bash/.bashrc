@@ -9,6 +9,7 @@ alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
 alias mc='EDITOR=vim mc'
+alias fuck='sudo $(history -p !!)'
 
 #export LANG=en_US.utf8
 
