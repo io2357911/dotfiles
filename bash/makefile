@@ -29,7 +29,7 @@ lan-scan:
 
 # --- Share ---
 
-SHARE_HOST=192.168.0.26/share
+SHARE_HOST=192.168.1.26/share
 SHARE_PATH=/mnt/smb-share
 
 mount-smb-share:
@@ -91,6 +91,11 @@ umount-ssh:
 
 mount-cdrom:
 	sudo mount -o loop -t iso9660 /dev/sr0 /mnt/cdrom
+
+mount-win:
+	sudo mount /dev/sda4 /mnt/win
+umount-win:
+	sudo umount /dev/sda4
 
 # --- Updates ---
 update:
@@ -172,3 +177,7 @@ define _backup_restore
 	rsync -av -e "ssh -o Compression=no" --exclude-from=.rsync-ignore.list $V/$1/ $1/
 endef
 
+
+# --- GCC ---
+change-gcc:
+	sudo update-alternatives --config cc

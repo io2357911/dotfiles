@@ -21,11 +21,19 @@
 #-A TCP -p tcp --dport 8200 -j ACCEPT
 # transmission
 #-A TCP -p tcp --dport 9091 -j ACCEPT
+# cups
+#-A TCP -p tcp --dport 631 -j ACCEPT
+# tomcat7
+#-A TCP -p tcp --dport 8080 -j ACCEPT
 # samba
 #-A UDP -p udp --dport 137 -j ACCEPT
 #-A UDP -p udp --dport 138 -j ACCEPT
 #-A TCP -p tcp --dport 139 -j ACCEPT
 #-A TCP -p tcp --dport 445 -j ACCEPT
+# mqtt mosquitto
+#-A TCP -p tcp --dport 8083 -j ACCEPT
+# istok-stand
+#-A UDP -p udp --dport 2048 -j ACCEPT
 # syslog-ng for incoming logs
 #-A UDP -p udp --dport 514 -j ACCEPT
 COMMIT
