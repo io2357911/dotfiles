@@ -146,11 +146,13 @@ remove-user-logo:
 	sudo rm /usr/share/images/desktop-base/$V
 
 # --- Monitor ---
+#MON=VGA1
+MON=HDMI1
 monitor-up:
-	xrandr --output HDMI1 --auto --right-of LVDS1
+	xrandr --output $(MON) --auto --right-of LVDS1
 	feh --bg-scale /usr/share/images/desktop-base/desktop-background
 monitor-down:
-	xrandr --output HDMI1 --off
+	xrandr --output $(MON) --off
 
 # --- Backups ---
 
