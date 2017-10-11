@@ -1,0 +1,71 @@
+Host pi.local
+     HostName 192.168.0.26
+     User pi
+     Port 8822
+     IdentityFile ~/.ssh/id_rsa_rasp_pi
+
+Host pi.remote
+     HostName io26.ddns.net
+     User pi
+     Port 8822
+     IdentityFile ~/.ssh/id_rsa_rasp_pi
+
+Host git.remote
+#     HostName io26.ddns.net
+     HostName 93.187.181.107
+     User git
+     Port 7722
+     IdentityFile ~/.ssh/id_rsa_srv_git
+
+Host git.local
+     HostName 192.168.1.26
+     User git
+     Port 7722
+     IdentityFile ~/.ssh/id_rsa_srv_git
+
+Host tracker.local
+     HostName 192.168.0.20
+     User root
+     Port 48721
+     IdentityFile ~/.ssh/id_rsa_tracker
+
+Host bk
+     HostName 192.168.2.1
+     User root
+     Port 22
+
+Host du
+     HostName 192.168.2.2
+     User root
+     Port 22
+
+Host deb.local
+     User root
+     Port 22
+     IdentityFile ~/.ssh/id_rsa_deb_root
+
+Host srv.local
+     HostName 192.168.1.26
+     User nullptr
+     Port 7722
+     IdentityFile ~/.ssh/id_rsa_srv_nullptr
+
+Host srv.remote
+#     HostName io26.ddns.net
+     HostName 93.187.181.107
+     User nullptr
+     Port 7722
+     IdentityFile ~/.ssh/id_rsa_srv_nullptr
+
+Host git.rasp.local
+     HostName 192.168.0.26
+     User git
+     Port 8822
+     IdentityFile ~/.ssh/id_rsa_rasp_git
+
+Host git.rasp.remote
+     HostName io26.ddns.net
+     User git
+     Port 8822
+     IdentityFile ~/.ssh/id_rsa_rasp_git
+

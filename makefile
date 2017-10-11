@@ -133,6 +133,8 @@ cfg-rsync:
 cfg-srv: cfg-ssh cfg-ddclient cfg-smb cfg-minidlna cfg-trans
 
 cfg-ssh:
+	mkdir -p ~/.ssh
+	cp ssh/config ~/.ssh/config
 	sudo cp -v ssh/sshd_config /etc/ssh
 
 cfg-ddclient:
