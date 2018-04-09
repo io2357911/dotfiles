@@ -751,11 +751,11 @@ regex/i/\.(pdf|djvu)$
 
 # office
 regex/i/\.(doc|docx)$
-        Open=/usr/bin/wps %f > /dev/null 2>&1 &
+        Open=/usr/bin/libreoffice %f > /dev/null 2>&1 &
 regex/i/\.(ppt|pptx)$
-        Open=/usr/bin/wpp %f > /dev/null 2>&1 &
+        Open=/usr/bin/libreoffice %f > /dev/null 2>&1 &
 regex/i/\.(xls|xlsx)$
-        Open=/usr/bin/et %f > /dev/null 2>&1 &
+        Open=/usr/bin/libreoffice %f > /dev/null 2>&1 &
 
 # Default target for anything not described above
 default/*
