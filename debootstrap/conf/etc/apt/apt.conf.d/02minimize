@@ -1,0 +1,8 @@
+
+Acquire::GzipIndexes "true";
+#Acquire::CompressionTypes::Order:: "gz";
+#Acquire::Languages "none";
+
+APT::Install-Recommends "0";
+APT::Install-Suggests "0";
+
