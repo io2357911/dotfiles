@@ -120,9 +120,9 @@ cfg-mc:
 cfg-root:
 	sudo cp -vr root/*.service /etc/systemd/system/
 	
-	sudo mkdir -p /etc/iptables
-	sudo cp root/iptables.rules /etc/iptables
-	sudo systemctl enable iptables
+	#sudo mkdir -p /etc/iptables
+	#sudo cp root/iptables.rules /etc/iptables
+	#sudo systemctl enable iptables
 
 cfg-rsync:
 	cp -v rsync/.rsync-ignore.list ~/
