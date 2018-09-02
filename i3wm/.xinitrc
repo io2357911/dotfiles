@@ -1,5 +1,5 @@
 export QT_QPA_PLATFORMTHEME=gtk2
-feh --bg-scale /home/nullptr/img/bg
+feh --bg-scale /usr/share/images/desktop-base/background-image
 xcompmgr &
 terminator -e tmux & 
 

@@ -747,7 +747,8 @@ regex/i/\.(png|jpg)$
 
 # pdf
 regex/i/\.(pdf|djvu)$
-        Open=/usr/bin/qpdfview --unique %f > /dev/null 2>&1 &
+        Open=/usr/bin/zathura %f > /dev/null 2>&1 &
+        #Open=/usr/bin/qpdfview --unique %f > /dev/null 2>&1 &
 
 # office
 regex/i/\.(doc|docx)$
