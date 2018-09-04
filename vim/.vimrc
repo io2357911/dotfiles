@@ -75,8 +75,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 Plug 'vim-syntastic/syntastic'
-
 Plug 'vim-scripts/Conque-GDB'
+Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-surround'
 
 " tags managment
 
