@@ -3,10 +3,10 @@ Description=i3lock
 Before=sleep.target
 
 [Service]
-User=nullptr
+User=io
 Type=forking
 Environment=DISPLAY=:0
-ExecStart=/usr/bin/i3lock -i /home/nullptr/img/lock.png
+ExecStart=/usr/bin/i3lock -t -i /home/io/img/lock
 
 [Install]
 WantedBy=sleep.target

@@ -1,6 +1,7 @@
 export QT_QPA_PLATFORMTHEME=gtk2
-feh --bg-scale /usr/share/images/desktop-base/background-image
-xcompmgr &
+
+feh --bg-scale /home/$USER/img/background
+#xrandr --output DVI-0 --auto --left-of HDMI-0
 terminator -e tmux & 
 
 exec i3
