@@ -37,6 +37,7 @@ let g:netrw_liststyle = 3
 
 
 let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_confirm_extra_conf = 0
 
 
 " ctrlsf
@@ -75,6 +76,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 Plug 'vim-syntastic/syntastic'
+Plug 'scrooloose/nerdcommenter'
 
 Plug 'vim-scripts/Conque-GDB'
 
