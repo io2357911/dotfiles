@@ -10,13 +10,18 @@ set number
 set exrc
 set secure
 
+set hidden
+
+" windows encoding switch
+map <S-w> :e ++enc=cp1251<CR>
+
 
 " swp directory
 
 
-set backupdir=~/.vim//
-set directory=~/.vim//
-set undodir=~/.vim//
+set backupdir=~/.vim/
+set directory=~/.vim/
+set undodir=~/.vim/
 
 
 " completion
@@ -38,6 +43,8 @@ let g:netrw_liststyle = 3
 
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_confirm_extra_conf = 0
+let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_enable_diagnostic_highlighting = 0
 
 
 " ctrlsf
@@ -66,6 +73,13 @@ nmap <F7> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 
 
+" easytags
+
+
+let g:easytags_async = 1
+let g:easytags_auto_highlight = 0
+
+
 " vim-plug
 
 
@@ -75,7 +89,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdtree'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
-Plug 'vim-syntastic/syntastic'
 Plug 'scrooloose/nerdcommenter'
 
 Plug 'vim-scripts/Conque-GDB'
@@ -103,6 +116,3 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'majutsushi/tagbar'
 
 call plug#end()
-
-
-
