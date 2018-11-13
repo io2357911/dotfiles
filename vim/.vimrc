@@ -42,9 +42,11 @@ let g:netrw_liststyle = 3
 
 
 let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_confirm_extra_conf = 0
+let g:ycm_show_diagnostics_ui = 0
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_enable_diagnostic_highlighting = 0
+let g:ycm_max_diagnostics_to_display = 1000
+let g:ycm_confirm_extra_conf = 0
 
 
 " ctrlsf
@@ -76,6 +78,7 @@ nmap <F8> :TagbarToggle<CR>
 " easytags
 
 
+let g:easytags_file = '.tags'
 let g:easytags_async = 1
 let g:easytags_auto_highlight = 0
 
