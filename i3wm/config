@@ -135,15 +135,16 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-workspace $ws1 output LVDS1
-workspace $ws2 output LVDS1
-workspace $ws3 output LVDS1
-workspace $ws4 output LVDS1
+workspace $ws1 output DVI-0
+workspace $ws2 output DVI-0
+workspace $ws3 output DVI-0
+workspace $ws4 output DVI-0
 
-workspace $ws5 output HDMI1
-workspace $ws6 output VGA1
-workspace $ws7 output HDMI1
-workspace $ws8 output HDMI1
+workspace $ws5 output DVI-0
+workspace $ws6 output DVI-0
+workspace $ws7 output DVI-0
+workspace $ws8 output DVI-0
+workspace $ws9 output DVI-0
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -193,7 +194,7 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-bindsym $mod+F2 exec i3lock -i ~/img/lock.png
+bindsym $mod+F2 exec i3lock -t -i ~/img/lock.png
 bindsym $mod+F3 exec systemctl suspend
 bindsym $mod+F4 exec systemctl poweroff
 
@@ -202,18 +203,20 @@ bindsym $mod+F4 exec systemctl poweroff
 bar {
         #status_command i3status
 	status_command i3blocks
+
+	colors {
+		background #504945
+		statusline #d5c4a1
+		separator #3c3836 
+		focused_workspace #3c3836 #32302f #fabd2f
+		active_workspace #3c3836 #504945 #d5c4a1
+		inactive_workspace #3c3836 #504945 #d5c4a1
+		urgent_workspace   #7c6f64 #fabd2f #3c3836	
+	}
 }
 
-#new_window pixel
 # class                 border  backgr. text    indicator
-#client.focused          #183A09 #d2e55d #000000 #2e9ef4
-#client.focused_inactive #333333 #d2e55d #ffffff #d2e55d
-#client.unfocused        #333333 #d2e55d #888888 #d2e55d
-#client.urgent           #2f343a #d2e55d #ffffff #d2e55d
-
-client.focused          #4c7899 #285577 #ffffff #2e9ef4
-client.focused_inactive #333333 #5f676a #ffffff #484e50
-client.unfocused        #333333 #222222 #888888 #292d2e
-client.urgent           #2f343a #900000 #ffffff #900000
-
-#B2F42E
+client.focused          #3c3836 #32302f #fabd2f #fabd2f
+client.focused_inactive #3c3836 #504945 #d5c4a1 #504945
+client.unfocused        #3c3836 #504945 #d5c4a1 #504945
+client.urgent           #7c6f64 #fabd2f #3c3836 #fabd2f
