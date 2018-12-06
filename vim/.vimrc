@@ -19,6 +19,7 @@ au BufWinEnter ?* silent loadview
 map <S-w> :e ++enc=cp1251<CR>
 
 
+
 " swp directory
 
 
@@ -63,6 +64,13 @@ let g:ctrlsf_position = 'right'
 
 let g:airline_theme='base16_google'
 
+
+" easytags
+
+
+let g:easytags_file = '~/.vim/' . fnamemodify('tags', ':p:gs?/?=?')
+let g:easytags_async = 1
+let g:easytags_auto_highlight = 0
 
 
 " fugitive
