@@ -12,6 +12,9 @@ set secure
 
 set hidden
 
+au BufWinLeave ?* mkview
+au BufWinEnter ?* silent loadview
+
 " windows encoding switch
 map <S-w> :e ++enc=cp1251<CR>
 
@@ -94,7 +97,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 Plug 'scrooloose/nerdcommenter'
 
-Plug 'vim-scripts/Conque-GDB'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " tags managment
 
