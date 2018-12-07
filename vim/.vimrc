@@ -55,6 +55,7 @@ let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_enable_diagnostic_highlighting = 0
 let g:ycm_max_diagnostics_to_display = 1000
 let g:ycm_confirm_extra_conf = 0
+highlight YcmErrorSection guibg=#000000
 
 
 " ctrlsf
