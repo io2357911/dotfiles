@@ -15,14 +15,13 @@ set hidden
 au BufWinLeave ?* mkview
 au BufWinEnter ?* silent loadview
 
-map <C-j> 6j
-map <C-k> 6k
+noremap <C-u> 3<C-u>
+noremap <C-d> 3<C-d>
 
 noremap <C-p> :Files<CR>
 
 " windows encoding switch
 map <S-w> :e ++enc=cp1251<CR>
-
 
 
 " swp directory
