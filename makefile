@@ -47,9 +47,9 @@ cfg-i3wm:
 	-cp -v ~/.xsessionrc ~/.xsessionrc.orig        
 	cp -v i3wm/.xsessionrc ~/
 	
-	sudo mkdir -pv /etc/X11/xorg.conf.d/
-	sudo cp i3wm/10-monitor.conf /etc/X11/xorg.conf.d/
-	sudo cp i3wm/xorg.conf /etc/X11/xorg.conf
+	#sudo mkdir -pv /etc/X11/xorg.conf.d/
+	#sudo cp i3wm/10-monitor.conf /etc/X11/xorg.conf.d/
+	#sudo cp i3wm/xorg.conf /etc/X11/xorg.conf
 	
 	sudo cp i3wm/i3lock.service /etc/systemd/system/
 	sudo systemctl enable i3lock.service

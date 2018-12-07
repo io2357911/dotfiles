@@ -15,6 +15,11 @@ set hidden
 au BufWinLeave ?* mkview
 au BufWinEnter ?* silent loadview
 
+map <C-j> 6j
+map <C-k> 6k
+
+noremap <C-p> :Files<CR>
+
 " windows encoding switch
 map <S-w> :e ++enc=cp1251<CR>
 
@@ -65,14 +70,6 @@ let g:ctrlsf_position = 'right'
 let g:airline_theme='base16_google'
 
 
-" easytags
-
-
-let g:easytags_file = '~/.vim/' . fnamemodify('tags', ':p:gs?/?=?')
-let g:easytags_async = 1
-let g:easytags_auto_highlight = 0
-
-
 " fugitive
 
 
@@ -89,7 +86,7 @@ nmap <F8> :TagbarToggle<CR>
 " easytags
 
 
-let g:easytags_file = '.tags'
+let g:easytags_file = '~/.vim/' . fnamemodify('tags', ':p:gs?/?=?')
 let g:easytags_async = 1
 let g:easytags_auto_highlight = 0
 
