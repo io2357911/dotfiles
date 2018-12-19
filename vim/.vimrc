@@ -1,6 +1,6 @@
 
 
-" common
+" misc
 
 
 set mouse-=a
@@ -18,9 +18,10 @@ au BufWinEnter ?* silent loadview
 noremap <C-u> 3<C-u>
 noremap <C-d> 3<C-d>
 
-
 " windows encoding switch
 map <S-w> :e ++enc=cp1251<CR>
+
+noremap <C-m> :!mc<CR>
 
 
 " fzf.vim
@@ -30,8 +31,9 @@ noremap <C-p> :Files<CR>
 noremap <C-h> :BTags<CR>
 noremap <C-j> :Tags<CR>
 noremap <C-k> :Buffers<CR>
-noremap <C-m> :Marks<CR>
+noremap <C-x> :Marks<CR>
 noremap <C-f> :Ag<CR>
+noremap <C-l> :BLines<CR>
 
 
 " swp directory
@@ -99,7 +101,7 @@ nmap <F8> :TagbarToggle<CR>
 let g:easytags_file = '~/.vim/' . fnamemodify('tags', ':p:gs?/?=?')
 let g:easytags_async = 1
 let g:easytags_auto_highlight = 0
-noremap <C-i> :UpdateTags -R 
+"noremap <C-i> :UpdateTags -R 
 
 
 " vim-plug
