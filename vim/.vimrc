@@ -23,6 +23,9 @@ map <S-w> :e ++enc=cp1251<CR>
 
 noremap <C-m> :!mc<CR>
 
+" auto yank to clipboard
+autocmd TextYankPost * if v:event.operator ==# 'y' | :let @+ = @" | endif
+
 
 " fzf.vim
 
