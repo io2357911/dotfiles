@@ -183,3 +183,12 @@ endef
 # --- GCC ---
 change-gcc:
 	sudo update-alternatives --config cc
+
+# keyring
+
+set-pass:
+	@secret-tool store --label "pass" attr val
+get-pass:
+	@secret-tool lookup attr val | xclip -sel c
+show-pass:
+	@secret-tool lookup attr val
