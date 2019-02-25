@@ -7,6 +7,10 @@ set mouse-=a
 syntax on
 set number
 
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
 set exrc
 set secure
 
@@ -21,22 +25,33 @@ noremap <C-d> 3<C-d>
 " windows encoding switch
 map <S-w> :e ++enc=cp1251<CR>
 
-noremap <C-m> :!mc<CR>
-
 " auto yank to clipboard
 autocmd TextYankPost * if v:event.operator ==# 'y' | :let @+ = @" | endif
+
+
+" make
+
+
+noremap <C-m>a :make!<CR>
+noremap <C-m>c :make! clean<CR>
+noremap <C-m>w :w \| make!<CR>
+noremap <C-m>r :make! 
+noremap <C-m>i :w \| make! 
+noremap <C-m>l :silent! :copen<CR>
+noremap <C-m>t :UpdateTags -R .<CR>
+noremap <C-m>d :UpdateTags -R 
 
 
 " fzf.vim
 
 
-noremap <C-p> :Files<CR>
-noremap <C-h> :BTags<CR>
-noremap <C-j> :Tags<CR>
-noremap <C-k> :Buffers<CR>
-noremap <C-x> :Marks<CR>
-noremap <C-f> :Ag<CR>
-noremap <C-l> :BLines<CR>
+noremap <C-f>f :Files<CR>
+noremap <C-f>j :BTags<CR>
+noremap <C-f>t :Tags<CR>
+noremap <C-f>b :Buffers<CR>
+noremap <C-f>m :!mc<CR>
+noremap <C-f>a :Ag<CR>
+noremap <C-f>l :BLines<CR>
 
 
 " swp directory
@@ -104,7 +119,6 @@ nmap <F8> :TagbarToggle<CR>
 let g:easytags_file = '~/.vim/' . fnamemodify('tags', ':p:gs?/?=?')
 let g:easytags_async = 1
 let g:easytags_auto_highlight = 0
-"noremap <C-i> :UpdateTags -R 
 
 
 " vim-plug
