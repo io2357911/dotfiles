@@ -1,15 +1,16 @@
 #! /bin/bash
 
 KEYBOARD="AT Translated Set 2 keyboard" 
+TOUCHPAD="HTIX5288:00 0911:5288 Touchpad"
 
-id=$(xinput | grep "$KEYBOARD" | cut -d "=" -f2 | cut -d "[" -f1)
-
-enabled=$(xinput list-props $id | grep "Device Enabled" | awk -F ' ' '{print $4}')
+enabled=$(xinput list-props "$KEYBOARD" | grep "Device Enabled" | awk -F ' ' '{print $4}')
 
 if [ $enabled == 0 ]; then
-    xinput set-prop $id "Device Enabled" 1
+    xinput set-prop "$KEYBOARD" "Device Enabled" 1
+    xinput set-prop "$TOUCHPAD" --type=float "Coordinate Transformation Matrix" 1 0 0 0 1 0 0 0 1
     echo ⌨
 else
-    xinput set-prop $id "Device Enabled" 0
+    xinput set-prop "$KEYBOARD" "Device Enabled" 0
+    xinput set-prop "$TOUCHPAD" --type=float "Coordinate Transformation Matrix" 1 0 0 0 -1 0 0 0 1
     echo !⌨
 fi
