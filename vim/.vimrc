@@ -6,6 +6,7 @@
 set mouse-=a
 syntax on
 set number
+set autoread
 
 set tabstop=4
 set shiftwidth=4
@@ -15,6 +16,8 @@ set exrc
 set secure
 
 set hidden
+
+cnoremap w!! w !sudo tee %
 
 au BufWinLeave ?* mkview
 au BufWinEnter ?* silent loadview
@@ -38,19 +41,26 @@ noremap <C-m>w :w \| make!<CR>
 noremap <C-m>r :make! 
 noremap <C-m>i :w \| make! 
 noremap <C-m>l :silent! :copen<CR>
-noremap <C-m>t :UpdateTags -R .<CR>
-noremap <C-m>d :UpdateTags -R 
+noremap <C-m>t :UpdateTags -R 
 
 
 " fzf.vim
 
 
+noremap <C-f> <CR>
 noremap <C-f>f :Files<CR>
+
 noremap <C-f>j :BTags<CR>
-noremap <C-f>t :Tags<CR>
+
+noremap <C-f>t yiw \| :Tags <C-r>"<CR>
+noremap <C-f>T :Tags<CR>
+
 noremap <C-f>b :Buffers<CR>
 noremap <C-f>m :!mc<CR>
-noremap <C-f>a :Ag<CR>
+
+noremap <C-f>a yiw \| :Ag <C-r>"<CR>
+noremap <C-f>A :Ag<CR>
+
 noremap <C-f>l :BLines<CR>
 
 
@@ -92,6 +102,11 @@ highlight YcmErrorSection guibg=#000000
 
 
 let g:ctrlsf_position = 'right'
+let g:ctrlsf_confirm_save = 0
+let g:ctrlsf_auto_focus = {
+    \ "at": "start"
+    \ }
+noremap <C-c>s yiw \| :CtrlSF <C-r>"<CR>
 
 
 " airline-themes
