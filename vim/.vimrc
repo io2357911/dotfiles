@@ -31,6 +31,9 @@ map <S-w> :e ++enc=cp1251<CR>
 " auto yank to clipboard
 autocmd TextYankPost * if v:event.operator ==# 'y' | :let @+ = @" | endif
 
+" save opened buffers
+"exec 'set viminfo=%,' . &viminfo
+
 
 " make
 
@@ -42,6 +45,8 @@ noremap <C-m>r :make!
 noremap <C-m>i :w \| make! 
 noremap <C-m>l :silent! :copen<CR>
 noremap <C-m>t :UpdateTags -R 
+noremap <C-m>b :let @+ = 'b ' . expand('%:t') . ':' . line('.')<CR>
+"noremap <C-m>b :let @+ = 'b ' . expand('%:p') . ':' . line('.')<CR>
 
 
 " fzf.vim
@@ -62,6 +67,16 @@ noremap <C-f>a yiw \| :Ag <C-r>"<CR>
 noremap <C-f>A :Ag<CR>
 
 noremap <C-f>l :BLines<CR>
+
+
+" clang
+
+
+function! Formatonsave()
+  let l:formatdiff = 1
+  pyf /usr/share/clang/clang-format.py
+endfunction
+"autocmd BufWritePre *.h,*.hpp,*.cc,*.cpp call Formatonsave()
 
 
 " swp directory
@@ -166,6 +181,8 @@ Plug 'dyng/ctrlsf.vim'
 Plug 'tpope/vim-fugitive'
 
 " misc
+
+Plug 'tpope/vim-surround'
 
 Plug 'qpkorr/vim-bufkill'
 
