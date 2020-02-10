@@ -110,6 +110,10 @@ noremap <C-c>s yiw \| :CtrlSF <C-r>"<CR>
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-easytags'
 
+let g:easytags_file = data_path . '/' . fnamemodify('tags', ':p:gs?/?=?')
+let g:easytags_async = 1
+let g:easytags_auto_highlight = 0
+
 Plug 'tpope/vim-fugitive'
 
 set previewheight=30
@@ -124,5 +128,7 @@ Plug 'vim-airline/vim-airline-themes'
 let g:airline_theme='base16_google'
 
 Plug 'majutsushi/tagbar'
+
+Plug 'nathanalderson/yang.vim'
 
 call plug#end()
