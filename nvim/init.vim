@@ -93,6 +93,7 @@ noremap <C-m>i :w \| :AsyncRun make
 noremap <C-m>l :silent! :copen<CR>
 noremap <C-m>t :UpdateTags -R 
 noremap <C-m>b :let @+ = 'b ' . expand('%:t') . ':' . line('.')<CR>
+noremap <C-m>t :AsyncStop!<CR>
 "noremap <C-m>b :let @+ = 'b ' . expand('%:p') . ':' . line('.')<CR>
 
 noremap <C-a>k :!gitk<CR>
@@ -117,6 +118,12 @@ let g:easytags_auto_highlight = 0
 Plug 'tpope/vim-fugitive'
 
 set previewheight=30
+
+Plug 'sakhnik/nvim-gdb', { 'do': ':UpdateRemotePlugins' }
+
+noremap <C-j>o :GdbStart gdb<CR>
+noremap <C-j>b :GdbBreakpointToggle<CR>
+noremap <C-j>c :GdbContinue<CR>
 
 Plug 'tpope/vim-surround'
 
