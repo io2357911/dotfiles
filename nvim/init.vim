@@ -58,6 +58,8 @@ set wildmenu
 " vim-plug
 call plug#begin(data_path . '/plugged')
 
+let g:plug_window='enew'
+
 Plug 'scrooloose/nerdtree'
 
 nmap <F7> :NERDTreeToggle<CR>
