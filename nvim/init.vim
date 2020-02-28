@@ -22,6 +22,21 @@ cnoremap w!! w !sudo tee %
 noremap <C-u> 3<C-u>
 noremap <C-d> 3<C-d>
 
+" tabs
+map <M-1> 1gt<CR>
+map <M-2> 2gt<CR>
+map <M-3> 3gt<CR>
+map <M-4> 4gt<CR>
+map <M-5> 5gt<CR>
+
+map <C-h> :tabp<CR>
+map <C-l> :tabn<CR>
+map <C-j> :tabr<CR>
+map <C-k> :tabl<CR>
+
+map <M-h> :tabm -1<CR>
+map <M-l> :tabm +1<CR>
+
 " windows encoding switch
 map <S-w> :e ++enc=cp1251<CR>
 
@@ -125,9 +140,9 @@ set updatetime=100
 
 Plug 'sakhnik/nvim-gdb', { 'do': ':UpdateRemotePlugins' }
 
-noremap <C-j>o :GdbStart gdb<CR>
-noremap <C-j>b :GdbBreakpointToggle<CR>
-noremap <C-j>c :GdbContinue<CR>
+noremap <C-g>o :GdbStart gdb<CR>
+noremap <C-g>b :GdbBreakpointToggle<CR>
+noremap <C-g>c :GdbContinue<CR>
 
 Plug 'tpope/vim-surround'
 
