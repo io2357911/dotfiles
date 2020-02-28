@@ -116,6 +116,9 @@ noremap <C-m>k :AsyncStop!<CR>
 noremap <C-a>k :!gitk<CR>
 noremap <C-a>g :!git gui<CR>
 
+" cooperate with vim-fugitive
+command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
+
 Plug 'dyng/ctrlsf.vim'
 
 let g:ctrlsf_position = 'right'
