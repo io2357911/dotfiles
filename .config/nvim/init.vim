@@ -78,6 +78,7 @@ let g:ycm_confirm_extra_conf = 0
 highlight YcmErrorSection guibg=#000000
 
 Plug 'scrooloose/nerdcommenter'
+"Plug 'scrooloose/nerdcommenter', { 'on':  'NERDTreeToggle' }
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -131,7 +132,7 @@ let g:ctrlsf_auto_focus = {
 noremap <C-c>s yiw \| :CtrlSF <C-r>"<CR>
 
 Plug 'xolox/vim-misc'
-Plug 'xolox/vim-easytags'
+Plug 'xolox/vim-easytags', {'for': ['cpp', 'c', 'h'] }
 
 let g:easytags_file = data_path . '/' . fnamemodify('tags', ':p:gs?/?=?')
 let g:easytags_async = 1
@@ -160,7 +161,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 let g:airline_theme='base16_google'
 
-Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar', { 'on':  'TagbarToggle' }
 
 Plug 'nathanalderson/yang.vim'
 
