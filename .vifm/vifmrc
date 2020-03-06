@@ -1,10 +1,11 @@
 set vicmd=nvim
 set vifminfo=bookmarks,bmarks,chistory
 set viewcolumns=-{name},{size},18%{mtime}
+set syscalls
 
 only
 
-colorscheme molokai
+colorscheme gruvbox
 
 map b :bmarks<CR>
 
@@ -12,7 +13,8 @@ command vim nvim
 
 filetype *.jpg,*.jpeg,*.png,*.gif viewnior %f 2>/dev/null &
 filetype *.mkv mpv %f 2>/dev/null &
-filetype *.pdf,*.epub zathura %f 2>/dev/null &
+filetype *.pdf,*.epub,*.djvu zathura %f 2>/dev/null &
 filetype *.fb2 FBReader %f 2>/dev/null &
 filetype *.doc,*.docx,*.ods libreoffice %f 2>/dev/null &
 filetype *.bin,*.gen mednafen %f 2>/dev/null &
+filetype *.mm freemind %f 2>/dev/null &
