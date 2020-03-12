@@ -31,8 +31,6 @@ map <M-5> 5gt<CR>
 
 map <C-h> :tabp<CR>
 map <C-l> :tabn<CR>
-map <C-j> :tabr<CR>
-map <C-k> :tabl<CR>
 
 map <M-h> :tabm -1<CR>
 map <M-l> :tabm +1<CR>
@@ -69,18 +67,16 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 nmap <F7> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer', 'for': ['cpp', 'c', 'h'] }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer', 'on': 'YcmRestartServer' }
+
+noremap <C-k>r :YcmRestartServer<CR>
+noremap <C-k>f :YcmCompleter FixIt<CR>
+noremap <C-k>j :YcmCompleter GoTo<CR>
 
 let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_show_diagnostics_ui = 0
-let g:ycm_enable_diagnostic_signs = 0
-let g:ycm_enable_diagnostic_highlighting = 0
-let g:ycm_max_diagnostics_to_display = 1000
 let g:ycm_confirm_extra_conf = 0
-highlight YcmErrorSection guibg=#000000
 
 Plug 'scrooloose/nerdcommenter'
-"Plug 'scrooloose/nerdcommenter', { 'on':  'NERDTreeToggle' }
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
