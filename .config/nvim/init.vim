@@ -67,7 +67,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 nmap <F7> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer', 'on': 'YcmRestartServer' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clangd-completer', 'on': 'YcmRestartServer' }
 
 noremap <C-k>r :YcmRestartServer<CR>
 noremap <C-k>f :YcmCompleter FixIt<CR>
