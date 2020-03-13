@@ -71,7 +71,8 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer', 'on': '
 
 noremap <C-k>r :YcmRestartServer<CR>
 noremap <C-k>f :YcmCompleter FixIt<CR>
-noremap <C-k>j :YcmCompleter GoTo<CR>
+noremap <C-k>t :YcmCompleter GetType<CR>
+noremap <C-j> :YcmCompleter GoTo<CR>
 
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_confirm_extra_conf = 0
