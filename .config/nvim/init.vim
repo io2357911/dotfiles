@@ -69,9 +69,9 @@ nmap <F8> :TagbarToggle<CR>
 
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clangd-completer', 'on': 'YcmRestartServer' }
 
-noremap <C-k>r :YcmRestartServer<CR>
-noremap <C-k>f :YcmCompleter FixIt<CR>
-noremap <C-k>t :YcmCompleter GetType<CR>
+noremap <C-k><C-r> :YcmRestartServer<CR>
+noremap <C-k><C-f> :YcmCompleter FixIt<CR>
+noremap <C-k><C-t> :YcmCompleter GetType<CR>
 noremap <C-j> :YcmCompleter GoTo<CR>
 
 let g:ycm_autoclose_preview_window_after_completion = 1
@@ -83,20 +83,20 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 noremap <C-f> <CR>
-noremap <C-f>f :Files<CR>
+noremap <C-f><C-f> :Files<CR>
 
-noremap <C-f>j :BTags<CR>
+noremap <C-f><C-j> :BTags<CR>
 
-noremap <C-f>t yiw \| :Tags <C-r>"<CR>
+noremap <C-f><C-t> yiw \| :Tags <C-r>"<CR>
 noremap <C-f>T :Tags<CR>
 
-noremap <C-f>b :Buffers<CR>
-noremap <C-f>m :!mc<CR>
+noremap <C-f><C-b> :Buffers<CR>
+noremap <C-f><C-m> :!mc<CR>
 
-noremap <C-f>a yiw \| :Ag <C-r>"<CR>
+noremap <C-f><C-a> yiw \| :Ag <C-r>"<CR>
 noremap <C-f>A :Ag<CR>
 
-noremap <C-f>l :BLines<CR>
+noremap <C-f><C-l> :BLines<CR>
 
 Plug 'rhysd/vim-clang-format'
 
@@ -104,19 +104,19 @@ autocmd FileType c,cpp,h ClangFormatAutoEnable
 
 Plug 'skywind3000/asyncrun.vim'
 
-noremap <C-m>a :AsyncRun make<CR>
-noremap <C-m>c :AsyncRun make clean<CR>
-noremap <C-m>w :w \| AsyncRun make<CR>
-noremap <C-m>r :AsyncRun make 
-noremap <C-m>i :w \| :AsyncRun make 
-noremap <C-m>l :silent! :copen<CR>
-noremap <C-m>t :UpdateTags -R 
-noremap <C-m>b :let @+ = 'b ' . expand('%:t') . ':' . line('.')<CR>
-noremap <C-m>k :AsyncStop!<CR>
-"noremap <C-m>b :let @+ = 'b ' . expand('%:p') . ':' . line('.')<CR>
+noremap <C-m><C-a> :AsyncRun make<CR>
+noremap <C-m><C-c> :AsyncRun make clean<CR>
+noremap <C-m><C-w> :w \| AsyncRun make<CR>
+noremap <C-m><C-r> :AsyncRun make 
+noremap <C-m><C-i> :w \| :AsyncRun make 
+noremap <C-m><C-l> :silent! :copen<CR>
+noremap <C-m><C-t> :UpdateTags -R 
+noremap <C-m><C-b> :let @+ = 'b ' . expand('%:t') . ':' . line('.')<CR>
+noremap <C-m><C-k> :AsyncStop!<CR>
+"noremap <C-m><C-b> :let @+ = 'b ' . expand('%:p') . ':' . line('.')<CR>
 
-noremap <C-a>k :!gitk<CR>
-noremap <C-a>g :!git gui<CR>
+noremap <C-a><C-k> :!gitk<CR>
+noremap <C-a><C-g> :!git gui<CR>
 
 " cooperate with vim-fugitive
 command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
