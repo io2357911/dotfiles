@@ -35,6 +35,9 @@ cfg-zathura:
 cfg-keyboard:
 	$(call cfg_root,keyboard)
 
+install-pkglist:
+	sudo pacman -Syu - < pkglist.txt
+
 define cfg_home
 	rsync -avb --suffix=.orig $1/home/ ~/
 endef
