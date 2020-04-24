@@ -23,8 +23,15 @@ cfg-tmux:
 cfg-make:
 	$(call cfg_home,make)
 
+PLUG_VIM_FILE=~/.local/share/nvim/site/autoload/plug.vim
+
 cfg-nvim:
 	$(call cfg_home,nvim)
+
+	if [ ! -f $(PLUG_VIM_FILE) ]; then \
+		curl -fLo $(PLUG_VIM_FILE) --create-dirs \
+    		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim; \
+	fi
 
 cfg-vifm:
 	$(call cfg_home,vifm)
