@@ -8,6 +8,8 @@ only
 colorscheme gruvbox
 
 map b :bmarks<CR>
+map x :!!./%c<CR>
+map X :!./%c &<CR>
 
 command vim nvim
 
