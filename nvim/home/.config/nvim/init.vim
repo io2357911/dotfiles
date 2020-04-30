@@ -131,7 +131,7 @@ let g:ctrlsf_auto_focus = {
 noremap <C-c>s yiw \| :CtrlSF <C-r>"<CR>
 
 Plug 'xolox/vim-misc'
-Plug 'xolox/vim-easytags', {'for': ['cpp', 'c', 'h'] }
+Plug 'xolox/vim-easytags', {'for': ['cpp', 'c', 'h', 'python'] }
 
 let g:easytags_file = data_path . '/' . fnamemodify('tags', ':p:gs?/?=?')
 let g:easytags_async = 1
