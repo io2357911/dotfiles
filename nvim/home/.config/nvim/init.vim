@@ -8,6 +8,7 @@ set exrc
 set secure
 set hidden
 set nohlsearch
+set lbr
 
 set tabstop=4
 set shiftwidth=4
@@ -44,6 +45,9 @@ set iminsert=0
 
 " auto yank to clipboard
 autocmd TextYankPost * if v:event.operator ==# 'y' | :let @+ = @" | endif
+
+" current markdown file preview
+noremap <C-m>m :!pandoc % > /tmp/doc.html && chromium /tmp/doc.html &<CR>
 
 " save opened buffers
 "exec 'set viminfo=%,' . &viminfo
