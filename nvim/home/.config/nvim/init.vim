@@ -47,7 +47,7 @@ set iminsert=0
 autocmd TextYankPost * if v:event.operator ==# 'y' | :let @+ = @" | endif
 
 " current markdown file preview
-noremap <C-m>m :!pandoc % > /tmp/doc.html && chromium /tmp/doc.html &<CR>
+noremap <C-m>m :!markdown_previewer % &<CR>
 
 " save opened buffers
 "exec 'set viminfo=%,' . &viminfo
