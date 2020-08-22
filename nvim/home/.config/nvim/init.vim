@@ -46,9 +46,6 @@ set iminsert=0
 " auto yank to clipboard
 autocmd TextYankPost * if v:event.operator ==# 'y' | :let @+ = @" | endif
 
-" current markdown file preview
-noremap <C-m>m :!markdown_previewer % &<CR>
-
 " save opened buffers
 "exec 'set viminfo=%,' . &viminfo
 
@@ -171,5 +168,12 @@ Plug 'nathanalderson/yang.vim'
 Plug 'luochen1990/rainbow'
 
 let g:rainbow_active = 1
+
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
+let g:mkdp_auto_close = 0
+
+noremap <C-m>m :MarkdownPreview<CR>
+noremap <C-m>s :MarkdownPreviewStop<CR>
 
 call plug#end()
