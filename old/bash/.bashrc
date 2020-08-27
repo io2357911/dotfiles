@@ -33,3 +33,5 @@ fi
 export LANG=en_US.utf8
 
 alias mc='. /usr/lib/mc/mc-wrapper.sh'
+
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
