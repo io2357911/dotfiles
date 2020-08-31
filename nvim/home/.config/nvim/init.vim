@@ -111,7 +111,7 @@ noremap <C-m>w :w \| AsyncRun make<CR>
 noremap <C-m>r :AsyncRun make 
 noremap <C-m>i :w \| :AsyncRun make 
 noremap <C-m>l :silent! :copen<CR>
-noremap <C-m>t :UpdateTags -R 
+noremap <C-m>t :GutentagsUpdate!<CR>
 noremap <C-m>b :let @+ = 'b ' . expand('%:t') . ':' . line('.')<CR>
 noremap <C-m>k :AsyncStop!<CR>
 "noremap <C-m>b :let @+ = 'b ' . expand('%:p') . ':' . line('.')<CR>
@@ -131,12 +131,10 @@ let g:ctrlsf_auto_focus = {
     \ }
 noremap <C-c>s yiw \| :CtrlSF <C-r>"<CR>
 
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-easytags', {'for': ['cpp', 'c', 'h', 'python'] }
+Plug 'ludovicchabant/vim-gutentags'
 
-let g:easytags_file = data_path . '/' . fnamemodify('tags', ':p:gs?/?=?')
-let g:easytags_async = 1
-let g:easytags_auto_highlight = 0
+let g:gutentags_cache_dir = data_path
+let g:gutentags_ctags_exclude = ['tmp', 'output', 'build', 'package', 'node_modules']
 
 Plug 'tpope/vim-fugitive'
 
