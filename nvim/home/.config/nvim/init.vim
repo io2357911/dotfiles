@@ -40,8 +40,16 @@ map <M-l> :tabm +1<CR>
 map <S-w> :e ++enc=cp1251<CR>
 
 " use multiple languages
-set keymap=russian-jcukenwin
-set iminsert=0
+
+noremap <C-^> :call ToggleLang()<CR>
+
+function! ToggleLang()
+    if &keymap != ""
+        set keymap=
+    else
+        set keymap=russian-jcukenwin
+    endif
+endfunction
 
 " auto yank to clipboard
 autocmd TextYankPost * if v:event.operator ==# 'y' | :let @+ = @" | endif
@@ -101,7 +109,8 @@ noremap <C-f>l :BLines<CR>
 
 Plug 'rhysd/vim-clang-format'
 
-autocmd FileType c,cpp,h ClangFormatAutoEnable
+noremap <C-c>e :ClangFormatAutoEnable<CR>
+noremap <C-c>d :ClangFormatAutoDisable<CR>
 
 Plug 'skywind3000/asyncrun.vim'
 
