@@ -41,15 +41,9 @@ map <S-w> :e ++enc=cp1251<CR>
 
 " use multiple languages
 
-noremap <C-^> :call ToggleLang()<CR>
-
-function! ToggleLang()
-    if &keymap != ""
-        set keymap=
-    else
-        set keymap=russian-jcukenwin
-    endif
-endfunction
+set keymap=russian-jcukenwin
+set iminsert=0
+set imsearch=0
 
 " auto yank to clipboard
 autocmd TextYankPost * if v:event.operator ==# 'y' | :let @+ = @" | endif
@@ -160,6 +154,8 @@ noremap <C-g>b :GdbBreakpointToggle<CR>
 noremap <C-g>c :GdbContinue<CR>
 
 Plug 'tpope/vim-surround'
+
+let g:surround_{char2nr('*')} = "**\r**"
 
 Plug 'qpkorr/vim-bufkill'
 
