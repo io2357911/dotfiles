@@ -72,9 +72,9 @@ nmap <F8> :TagbarToggle<CR>
 
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clangd-completer', 'on': 'YcmRestartServer' }
 
-noremap <C-k>r :YcmRestartServer<CR>
-noremap <C-k>f :YcmCompleter FixIt<CR>
-noremap <C-k>t :YcmCompleter GetType<CR>
+noremap <C-c>r :YcmRestartServer<CR>
+noremap <C-c>f :YcmCompleter FixIt<CR>
+noremap <C-c>t :YcmCompleter GetType<CR>
 noremap <C-j> :YcmCompleter GoTo<CR>
 
 let g:ycm_autoclose_preview_window_after_completion = 1
@@ -108,12 +108,14 @@ noremap <C-c>d :ClangFormatAutoDisable<CR>
 
 Plug 'skywind3000/asyncrun.vim'
 
+noremap <C-m>e :AsyncRun 
 noremap <C-m>a :AsyncRun make<CR>
 noremap <C-m>c :AsyncRun make clean<CR>
 noremap <C-m>w :w \| AsyncRun make<CR>
 noremap <C-m>r :AsyncRun make 
 noremap <C-m>i :w \| :AsyncRun make 
 noremap <C-m>l :silent! :copen<CR>
+noremap <C-m>L :silent! :tab copen<CR>
 noremap <C-m>t :GutentagsUpdate!<CR>
 noremap <C-m>b :let @+ = 'b ' . expand('%:t') . ':' . line('.')<CR>
 noremap <C-m>k :AsyncStop!<CR>
@@ -143,15 +145,23 @@ Plug 'tpope/vim-fugitive'
 
 set previewheight=30
 
+noremap <C-g>l :tab Git log<CR>
+noremap <C-g>s :tab Gstatus<CR>
+noremap <C-g>c :Gcommit<CR>
+noremap <C-g>u :Gpush origin 
+noremap <C-g>d :Gpull<CR>
+noremap <C-g>k :Git checkout 
+noremap <C-g>r :Git checkout .<CR>
+
 Plug 'airblade/vim-gitgutter'
 
 set updatetime=100
 
 Plug 'sakhnik/nvim-gdb', { 'do': ':UpdateRemotePlugins' }
 
-noremap <C-g>o :GdbStart gdb<CR>
-noremap <C-g>b :GdbBreakpointToggle<CR>
-noremap <C-g>c :GdbContinue<CR>
+noremap <C-k>o :GdbStart gdb<CR>
+noremap <C-k>b :GdbBreakpointToggle<CR>
+noremap <C-k>c :GdbContinue<CR>
 
 Plug 'tpope/vim-surround'
 
