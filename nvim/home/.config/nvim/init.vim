@@ -45,6 +45,10 @@ set keymap=russian-jcukenwin
 set iminsert=0
 set imsearch=0
 
+" use folds
+"set foldmethod=syntax
+"set nofoldenable
+
 " auto yank to clipboard
 autocmd TextYankPost * if v:event.operator ==# 'y' | :let @+ = @" | endif
 
@@ -145,13 +149,16 @@ Plug 'tpope/vim-fugitive'
 
 set previewheight=30
 
-noremap <C-g>l :tab Git log<CR>
+noremap <C-g>l :tab Git log --decorate --oneline --graph --pretty=format:"%h%x09%an%x09%ad%x09%s"<CR>
 noremap <C-g>s :tab Gstatus<CR>
 noremap <C-g>c :Gcommit<CR>
-noremap <C-g>u :Gpush origin 
-noremap <C-g>d :Gpull<CR>
+noremap <C-g>p :Gpull<CR>
+noremap <C-g>P :Gpush origin 
+noremap <C-g>r :Git rebase 
 noremap <C-g>k :Git checkout 
-noremap <C-g>r :Git checkout .<CR>
+noremap <C-g>w :Git checkout .<CR>
+noremap <C-g>h :Git stash<CR>
+noremap <C-g>H :Git stash pop<CR>
 
 Plug 'airblade/vim-gitgutter'
 
