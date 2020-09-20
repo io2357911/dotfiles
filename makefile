@@ -42,6 +42,9 @@ cfg-zathura:
 cfg-keyboard:
 	$(call cfg_root,keyboard)
 
+cfg-idea:
+	$(call cfg_home,idea)
+
 install-pkglist:
 	sudo pacman -Syu - < pkglist.txt
 

@@ -1,0 +1,18 @@
+set clipboard+=unnamed
+
+" run/debug
+
+map <C-m>r :action RunClass<CR>
+map <C-m>d :action Debug<CR>
+map <C-m>c :action Resume<CR>
+map <C-m>b :action ToggleLineBreakpoint<CR>
+
+" tabs
+
+map <C-l> :tabnext<CR>
+map <C-h> :tabprev<CR>
+
+" misc
+
+map <C-j> :action QuickJavaDoc<CR>
+map <C-m>n :action RenameElement<CR>
