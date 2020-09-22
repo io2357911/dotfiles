@@ -1,7 +1,10 @@
 set clipboard+=unnamed
 
+set surround
+
 " run/debug
 
+map <C-m>a :action CompileDirty<CR>
 map <C-m>r :action RunClass<CR>
 map <C-m>d :action Debug<CR>
 map <C-m>c :action Resume<CR>
@@ -15,4 +18,5 @@ map <C-h> :tabprev<CR>
 " misc
 
 map <C-j> :action QuickJavaDoc<CR>
-map <C-m>n :action RenameElement<CR>
+map <C-c>n :action RenameElement<CR>
+map <C-c>f :action ReformatCode<CR>
