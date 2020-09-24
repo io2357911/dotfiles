@@ -1,17 +1,30 @@
-# Share
-
-SHARE_HOST=192.168.0.1/share
-SHARE_PATH=/mnt/share
-SHARE_USER=user
-SHARE_PASS=pass
+# share
 
 mount-share:
-	@ sudo mount -t cifs -o username=$(SHARE_USER),password=$(SHARE_PASS) //$(SHARE_HOST) $(SHARE_PATH)
-
+	$(call smb_mount,user,pass,/share-path,/mount-path)
 umount-share:
-	sudo umount $(SHARE_PATH)
+	sudo umount /mount-path
 
-# Second monitor
+define smb_mount
+	@sudo mount -t cifs -o username=$1,password=$2,uid=io,gid=io //$3 $4
+endef
+
+# luks
+
+LUKS_NAME=luks
+LUKS_PART=/dev/sdc
+LUKS_MOUNT=$(LUKS_NAME)
+
+mount-luks:
+	sudo cryptsetup luksOpen $(LUKS_PART) $(LUKS_NAME)
+	sudo mount /dev/mapper/$(LUKS_NAME) $(LUKS_MOUNT)
+	-sudo systemctl start syncthing@$(USER)
+umount-luks:
+	-sudo systemctl stop syncthing@$(USER)
+	sudo umount $(LUKS_MOUNT)
+	sudo cryptsetup luksClose $(LUKS_NAME)
+
+# second monitor
 
 MONITOR_MAIN=eDP1
 MONITOR=HDMI1
