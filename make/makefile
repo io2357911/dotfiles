@@ -1,3 +1,7 @@
+# DO NOT EDIT!
+# Add machine specific overrides and recipes to ~/local.mk
+-include local.mk
+
 # share
 
 mount-share:
@@ -11,9 +15,9 @@ endef
 
 # luks
 
-LUKS_NAME=luks
-LUKS_PART=/dev/sdc
-LUKS_MOUNT=$(LUKS_NAME)
+LUKS_PART?=/dev/dummy
+LUKS_NAME?=luks
+LUKS_MOUNT?=$(LUKS_NAME)
 
 mount-luks:
 	sudo cryptsetup luksOpen $(LUKS_PART) $(LUKS_NAME)
@@ -26,8 +30,8 @@ umount-luks:
 
 # second monitor
 
-MONITOR_MAIN=eDP1
-MONITOR=HDMI1
+MONITOR_MAIN?=eDP1
+MONITOR?=HDMI1
 monitor-up:
 	xrandr --output $(MONITOR) --auto --right-of $(MONITOR_MAIN)
 monitor-down:
