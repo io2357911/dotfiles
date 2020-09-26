@@ -36,3 +36,19 @@ monitor-up:
 	xrandr --output $(MONITOR) --auto --right-of $(MONITOR_MAIN)
 monitor-down:
 	xrandr --output $(MONITOR) --off
+
+# backup
+
+BACKUP_DIRS?=~/luks/notes ~/luks/docs
+BACKUP_LOCAL_DIR?=~/luks/backup
+BACKUP_REMOTE_DIR?=gdrive:/backup
+BACKUP_PASS?=
+BACKUP_DAYS?=14
+
+backup:
+	@./.backup.py \
+		--output $(BACKUP_LOCAL_DIR) \
+		--remote $(BACKUP_REMOTE_DIR) \
+		--password $(BACKUP_PASS) \
+		--days $(BACKUP_DAYS) \
+		$(BACKUP_DIRS)
