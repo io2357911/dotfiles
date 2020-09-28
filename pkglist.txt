@@ -4,6 +4,7 @@ htop
 nload
 vifm
 bash-completion
+stow
 
 neovim
 ctags
