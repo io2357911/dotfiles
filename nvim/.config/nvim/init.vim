@@ -8,6 +8,7 @@ set exrc
 set secure
 set hidden
 set nohlsearch
+set noswapfile
 set lbr
 
 set tabstop=4
@@ -156,7 +157,7 @@ noremap <C-g>p :Gpull<CR>
 noremap <C-g>P :Gpush origin 
 noremap <C-g>r :Git rebase 
 noremap <C-g>k :Git checkout 
-noremap <C-g>w :Git checkout .<CR>
+noremap <C-g>K :Git checkout .<CR>
 noremap <C-g>h :Git stash<CR>
 noremap <C-g>H :Git stash pop<CR>
 
