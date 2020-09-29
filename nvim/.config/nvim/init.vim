@@ -197,4 +197,6 @@ let g:mkdp_auto_close = 0
 noremap <C-m>m :MarkdownPreview<CR>
 noremap <C-m>s :MarkdownPreviewStop<CR>
 
+Plug 'dense-analysis/ale'
+
 call plug#end()
