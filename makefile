@@ -17,4 +17,4 @@ define cfg
 endef
 
 install-pkglist:
-	sudo pacman -Syu - < pkglist.txt
+	sudo pacman -Syu --needed - < pkglist.txt

@@ -5,7 +5,7 @@ set surround
 " run/debug
 
 map <C-m>a :action CompileDirty<CR>
-map <C-m>r :action RunClass<CR>
+map <C-m>r :action Run<CR>
 map <C-m>s :action Stop<CR>
 map <C-m>d :action Debug<CR>
 map <C-m>c :action Resume<CR>
@@ -13,11 +13,13 @@ map <C-m>b :action ToggleLineBreakpoint<CR>
 
 " tabs
 
+map :q :tabclose
 map <C-l> :tabnext<CR>
 map <C-h> :tabprev<CR>
 
 " misc
 
+map :w :action ReformatCode
 map <C-j> :action QuickJavaDoc<CR>
 map <C-c>n :action RenameElement<CR>
 map <C-c>f :action ReformatCode<CR>

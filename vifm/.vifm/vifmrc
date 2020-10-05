@@ -14,7 +14,7 @@ map X :!./%c &<CR>
 command vim nvim
 
 filetype *.jpg,*.jpeg,*.png,*.gif viewnior %f 2>/dev/null &
-filetype *.mkv mpv %f 2>/dev/null &
+filetype *.mkv,*mp4 mpv %f 2>/dev/null &
 filetype *.pdf,*.epub,*.djvu zathura %f 2>/dev/null &
 filetype *.fb2 FBReader %f 2>/dev/null &
 filetype *.doc,*.docx,*.xlsx,*.ods libreoffice %f 2>/dev/null &

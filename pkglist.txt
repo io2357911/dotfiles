@@ -5,6 +5,7 @@ nload
 vifm
 bash-completion
 stow
+xclip
 
 neovim
 ctags
