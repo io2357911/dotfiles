@@ -1,5 +1,7 @@
 setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab autoindent smartindent
 
+setlocal foldmethod=indent
+
 " ale
 
 let g:ale_enabled = 0

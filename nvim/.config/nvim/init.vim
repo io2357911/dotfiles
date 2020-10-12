@@ -2,7 +2,7 @@ let data_path = stdpath('data')
 
 syntax on
 set mouse-=a
-set number
+set number relativenumber
 set autoread
 set exrc
 set secure
@@ -48,7 +48,7 @@ set imsearch=0
 
 " use folds
 "set foldmethod=syntax
-"set nofoldenable
+set nofoldenable
 
 " auto yank to clipboard
 autocmd TextYankPost * if v:event.operator ==# 'y' | :let @+ = @" | endif
@@ -126,9 +126,6 @@ noremap <C-m>b :let @+ = 'b ' . expand('%:t') . ':' . line('.')<CR>
 noremap <C-m>k :AsyncStop!<CR>
 "noremap <C-m>b :let @+ = 'b ' . expand('%:p') . ':' . line('.')<CR>
 
-noremap <C-a>k :!gitk<CR>
-noremap <C-a>g :!git gui<CR>
-
 " cooperate with vim-fugitive
 command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 
@@ -197,6 +194,21 @@ let g:mkdp_auto_close = 0
 noremap <C-m>m :MarkdownPreview<CR>
 noremap <C-m>s :MarkdownPreviewStop<CR>
 
+function! g:Open_browser(url)
+    silent exec "!chromium --new-window --app=" . a:url . " &"
+endfunction
+let g:mkdp_browserfunc = 'g:Open_browser'
+
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+
+let g:vim_markdown_math = 1
+let g:vim_markdown_new_list_item_indent = 0
+let g:vim_markdown_conceal_code_blocks = 0
+set conceallevel=2
+
 Plug 'dense-analysis/ale'
+
+let g:ale_enabled = 0
 
 call plug#end()
