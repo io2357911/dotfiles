@@ -21,8 +21,8 @@ cnoremap w!! w !sudo tee %
 "au BufWinLeave ?* mkview
 "au BufWinEnter ?* silent loadview
 
-noremap <C-u> 3<C-u>
-noremap <C-d> 3<C-d>
+"noremap <C-u> 3<C-u>
+"noremap <C-d> 3<C-d>
 
 " tabs
 map <M-1> 1gt<CR>
@@ -45,6 +45,18 @@ map <S-w> :e ++enc=cp1251<CR>
 set keymap=russian-jcukenwin
 set iminsert=0
 set imsearch=0
+
+map <M-6> :call ToggleIm()<CR>
+
+function! ToggleIm()
+    if &iminsert
+        set iminsert=0
+        set imsearch=0
+    else
+        set iminsert=1
+        set imsearch=1
+    endif
+endfunction
 
 " use folds
 "set foldmethod=syntax
@@ -178,6 +190,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 let g:airline_theme='base16_google'
+let g:airline_detect_iminsert=1
 
 Plug 'majutsushi/tagbar', { 'on':  'TagbarToggle' }
 
