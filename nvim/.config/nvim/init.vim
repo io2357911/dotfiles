@@ -1,19 +1,14 @@
-let data_path = stdpath('data')
-
 syntax on
+
 set mouse-=a
 set number relativenumber
-set autoread
-set exrc
-set secure
+set tabstop=4 shiftwidth=4 expandtab
 set hidden
-set nohlsearch
 set noswapfile
-set lbr
+set linebreak
 
-set tabstop=4
-set shiftwidth=4
-set expandtab
+set hlsearch incsearch ignorecase smartcase
+nnoremap <esc> :noh<return><esc>
 
 cnoremap w!! w !sudo tee %
 
@@ -21,15 +16,7 @@ cnoremap w!! w !sudo tee %
 "au BufWinLeave ?* mkview
 "au BufWinEnter ?* silent loadview
 
-"noremap <C-u> 3<C-u>
-"noremap <C-d> 3<C-d>
-
 " tabs
-map <M-1> 1gt<CR>
-map <M-2> 2gt<CR>
-map <M-3> 3gt<CR>
-map <M-4> 4gt<CR>
-map <M-5> 5gt<CR>
 
 map <C-h> :tabp<CR>
 map <C-l> :tabn<CR>
@@ -67,6 +54,8 @@ autocmd TextYankPost * if v:event.operator ==# 'y' | :let @+ = @" | endif
 
 " save opened buffers
 "exec 'set viminfo=%,' . &viminfo
+
+let data_path = stdpath('data')
 
 " swp directory
 let &backupdir = data_path . '/'

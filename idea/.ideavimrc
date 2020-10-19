@@ -1,11 +1,20 @@
 set clipboard+=unnamed
 set number relativenumber
+
+set hlsearch incsearch ignorecase smartcase
+nnoremap <esc> :noh<return><esc>
+
 set surround
+set commentary
 
 " run/debug
 
 map <C-m>a :action CompileDirty<CR>
+
 map <C-m>r :action Run<CR>
+map <C-m>R :action RunClass<CR>
+map <C-m>m :action RunConfiguration<CR>
+
 map <C-m>s :action Stop<CR>
 map <C-m>d :action Debug<CR>
 map <C-m>c :action Resume<CR>
@@ -13,7 +22,7 @@ map <C-m>b :action ToggleLineBreakpoint<CR>
 
 " tabs
 
-map :q :tabclose
+"map :q :tabclose
 map <C-l> :tabnext<CR>
 map <C-h> :tabprev<CR>
 
