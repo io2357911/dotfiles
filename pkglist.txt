@@ -24,3 +24,8 @@ zathura-pdf-mupdf
 
 virtualbox
 virtualbox-guest-iso
+
+rclone
+duplicity
+syncthing
+cryptsetup

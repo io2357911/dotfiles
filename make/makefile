@@ -48,16 +48,19 @@ monitor-down:
 
 # backup
 
-BACKUP_DIRS?=~/luks/notes ~/luks/docs
-BACKUP_LOCAL_DIR?=~/luks/backup
-BACKUP_REMOTE_DIR?=gdrive:/backup
+BACKUP_DIRS?=--include ~/luks/notes --include ~/luks/docs
+BACKUP_LOCAL_DIR?=~/luks
+BACKUP_REMOTE_DIR?=rclone://gdrive:/backups
+#BACKUP_REMOTE_DIR?=file:///tmp/backup
+BACKUP_RESTORE_DIR?=~/luks/backup
 BACKUP_PASS?=
-BACKUP_DAYS?=14
 
 backup:
-	@./.backup.py \
-		--output $(BACKUP_LOCAL_DIR) \
-		--remote $(BACKUP_REMOTE_DIR) \
-		--password $(BACKUP_PASS) \
-		--days $(BACKUP_DAYS) \
-		$(BACKUP_DIRS)
+	@PASSPHRASE=$(BACKUP_PASS) duplicity  \
+		$(BACKUP_DIRS) \
+		--exclude '**' \
+		$(BACKUP_LOCAL_DIR) $(BACKUP_REMOTE_DIR) 
+backup-list:
+	@PASSPHRASE=$(BACKUP_PASS) duplicity collection-status $(BACKUP_REMOTE_DIR)
+restore:
+	@PASSPHRASE=$(BACKUP_PASS) duplicity --force $(BACKUP_REMOTE_DIR) $(BACKUP_RESTORE_DIR)

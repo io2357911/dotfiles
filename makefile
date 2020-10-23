@@ -3,7 +3,6 @@ all: cfg-keyboard
 		idea \
 		make \
 		nvim \
-		scripts \
 		termite \
 		tmux \
 		vifm \
