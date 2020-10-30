@@ -54,6 +54,9 @@ BACKUP_REMOTE_DIR?=rclone://gdrive:/backups
 #BACKUP_REMOTE_DIR?=file:///tmp/backup
 BACKUP_RESTORE_DIR?=~/luks/backup
 BACKUP_PASS?=
+BACKUP_DT?=0D
+#BACKUP_DT?=1M
+#BACKUP_DT?=2020-10-20
 
 backup:
 	@PASSPHRASE=$(BACKUP_PASS) duplicity  \
@@ -62,5 +65,5 @@ backup:
 		$(BACKUP_LOCAL_DIR) $(BACKUP_REMOTE_DIR) 
 backup-list:
 	@PASSPHRASE=$(BACKUP_PASS) duplicity collection-status $(BACKUP_REMOTE_DIR)
-restore:
-	@PASSPHRASE=$(BACKUP_PASS) duplicity --force $(BACKUP_REMOTE_DIR) $(BACKUP_RESTORE_DIR)
+backup-restore:
+	@PASSPHRASE=$(BACKUP_PASS) duplicity --force -t $(BACKUP_DT) $(BACKUP_REMOTE_DIR) $(BACKUP_RESTORE_DIR)

@@ -45,6 +45,16 @@ function! ToggleIm()
     endif
 endfunction
 
+" paste markdown link from url in clipboard
+
+noremap <C-c>l :call PasteMdLink()<CR>
+
+function! PasteMdLink()
+    let url = @*
+    let title = system("echo -n $(wget -qO- '" . url . "' | perl -l -0777 -ne 'print $1 if /<title.*?>\\s*(.*?)\\s*<\\/title/si')")
+    exe "normal! a[" . title . "](" . url . ")\<Esc>"
+endfunction
+
 " use folds
 "set foldmethod=syntax
 set nofoldenable
@@ -212,5 +222,16 @@ set conceallevel=2
 Plug 'dense-analysis/ale'
 
 let g:ale_enabled = 0
+
+Plug 'easymotion/vim-easymotion'
+
+map  <space>c <Plug>(easymotion-bd-f)
+nmap <space>c <Plug>(easymotion-overwin-f)
+.
+map <space>l <Plug>(easymotion-bd-jk)
+nmap <space>l <Plug>(easymotion-overwin-line)
+
+map <space>w <Plug>(easymotion-bd-w)
+nmap <space>w <Plug>(easymotion-overwin-w)
 
 call plug#end()
