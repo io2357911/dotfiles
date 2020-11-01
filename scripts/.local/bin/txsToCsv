@@ -1,0 +1,89 @@
+#! /usr/bin/python3
+
+# This script converts vtb details.xml to csv format used by personal finance spreadsheet
+
+class Category:
+    HomeBills = "Квартплата"
+    Shop = "Продукты"
+    Network = "Связь"
+    Transport = "Транспорт"
+    Drugs = "Лекарства"
+    Misc = "Разное"
+
+
+CAREGORY_MAP = {
+    Category.Shop: ['^BILLA.*', '^PYATEROCHKA.*', '^VKUSVILL.*', ".*KFC.*"],
+    Category.Network: ['Операция по e-mail/телефону', 'BEELINE'],
+    Category.Drugs: ['APTECHNOE UCHREZHD-IE', 'APTEKA'],
+    Category.Transport:
+    ['KOMSOMOLSKAYA', 'TRANSPORTTVER', 'OAO Moskovsko-Tverskaya PPK'],
+}
+
+EXCLUDE = ['Пополнение через банкомат', 'Снятие в банкомате']
+
+
+def parseFloat(text):
+    return float(text.replace(" ", "").replace(",", "."))
+
+
+def parseDate(text):
+    import datetime
+    return datetime.datetime.strptime(text, '%Y-%m-%d')
+
+
+def parseTransactions(filename):
+    import xml.etree.ElementTree as et
+
+    xml = et.parse(filename)
+
+    txs = []
+    for xmlTx in xml.getroot().iter('Transaction'):
+        txs.append({
+            'details': xmlTx.find('Details').text,
+            'date': parseDate(xmlTx.find('ProcessedDate').text),
+            'sum': parseFloat(xmlTx.find('TransactionSum').text)
+        })
+    return txs
+
+
+def match(details, exclude):
+    import re
+    for pattern in exclude:
+        if re.match(pattern, details):
+            return False
+    return True
+
+
+def filterTransactions(txs, exclude):
+    return [tx for tx in txs if match(tx['details'], exclude)]
+
+
+def category(details, caretoryMap):
+    import re
+    for category, patterns in caretoryMap.items():
+        for pattern in patterns:
+            if re.match(pattern, details):
+                return category
+    return Category.Misc
+
+
+def assingCategories(txs):
+    for tx in txs:
+        tx['category'] = category(tx['details'], CAREGORY_MAP)
+
+
+def toCsv(txs):
+    csv = ''
+    for tx in txs:
+        csv += '{} ({})\t{}\t{}\n'.format(tx['category'], tx['details'],
+                                          -tx['sum'],
+                                          tx['date'].strftime("%Y/%m/%d"))
+    return csv
+
+
+if __name__ == '__main__':
+    from sys import argv
+    txs = parseTransactions(argv[1])
+    txs = filterTransactions(txs, EXCLUDE)
+    assingCategories(txs)
+    print(toCsv(txs))

@@ -6,7 +6,8 @@ all: cfg-keyboard
 		termite \
 		tmux \
 		vifm \
-		zathura
+		zathura \
+		scripts
 
 cfg-keyboard:
 	$(call cfg,keyboard)

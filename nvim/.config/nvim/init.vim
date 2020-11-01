@@ -225,9 +225,9 @@ let g:ale_enabled = 0
 
 Plug 'easymotion/vim-easymotion'
 
-map  <space>c <Plug>(easymotion-bd-f)
-nmap <space>c <Plug>(easymotion-overwin-f)
-.
+map  <space>j <Plug>(easymotion-bd-f)
+nmap <space>j <Plug>(easymotion-overwin-f)
+
 map <space>l <Plug>(easymotion-bd-jk)
 nmap <space>l <Plug>(easymotion-overwin-line)
 
