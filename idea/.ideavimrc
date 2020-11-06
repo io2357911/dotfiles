@@ -9,7 +9,7 @@ set commentary
 
 set easymotion
 
-map <space>c <Plug>(easymotion-bd-f)
+map <space>j <Plug>(easymotion-bd-f)
 map <space>l <Plug>(easymotion-bd-jk)
 map <space>w <Plug>(easymotion-bd-w)
 

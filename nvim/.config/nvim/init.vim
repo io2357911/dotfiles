@@ -96,7 +96,9 @@ noremap <C-j> :YcmCompleter GoTo<CR>
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_confirm_extra_conf = 0
 
-Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-commentary'
+
+autocmd FileType c,cpp setlocal commentstring=//\ %s
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -110,7 +112,7 @@ noremap <C-f>t yiw \| :Tags <C-r>"<CR>
 noremap <C-f>T :Tags<CR>
 
 noremap <C-f>b :Buffers<CR>
-noremap <C-f>m :!mc<CR>
+noremap <C-f>m :Marks<CR>
 
 noremap <C-f>a yiw \| :Ag <C-r>"<CR>
 noremap <C-f>A :Ag<CR>
