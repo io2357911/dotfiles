@@ -190,12 +190,12 @@ function! g:Open_browser(url)
 endfunction
 let g:mkdp_browserfunc = 'g:Open_browser'
 
-Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
 let g:vim_markdown_math = 1
 let g:vim_markdown_new_list_item_indent = 0
 let g:vim_markdown_conceal_code_blocks = 0
+let g:vim_markdown_toc_autofit = 1
 set conceallevel=2
 
 Plug 'dense-analysis/ale'
