@@ -1,3 +1,6 @@
+[options]
+font = Monospace 11
+
 [colors]
 # Base16 Gruvbox dark, pale
 # Author: Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)

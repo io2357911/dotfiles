@@ -20,7 +20,8 @@ set keymap=russian-jcukenwin
 set iminsert=0
 set imsearch=0
 
-map <M-6> :call ToggleIm()<CR>
+noremap <M-k> :call ToggleIm()<CR>
+inoremap <M-k> <C-O>:call ToggleIm()<CR>
 
 function! ToggleIm()
     if &iminsert
@@ -197,6 +198,8 @@ let g:vim_markdown_new_list_item_indent = 0
 let g:vim_markdown_conceal_code_blocks = 0
 let g:vim_markdown_toc_autofit = 1
 set conceallevel=2
+
+noremap <M-3> :Toc<CR>
 
 Plug 'dense-analysis/ale'
 
