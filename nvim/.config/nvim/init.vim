@@ -69,6 +69,8 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 noremap <M-1> :NERDTreeToggle<CR>
 noremap <M-2> :silent! :copen<CR>
 
+autocmd FileType nerdtree,help setlocal number relativenumber
+
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clangd-completer', 'on': 'YcmRestartServer' }
 
 noremap <C-c>r :YcmRestartServer<CR>
