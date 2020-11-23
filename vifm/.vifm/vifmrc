@@ -1,6 +1,7 @@
 set vicmd=nvim
 set vifminfo=bookmarks,bmarks,chistory
 set viewcolumns=-{name},{size},18%{mtime}
+set number relativenumber
 set syscalls
 
 only

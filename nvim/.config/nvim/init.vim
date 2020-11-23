@@ -10,6 +10,7 @@ set wildmenu wildmode=list,full
 set clipboard=unnamedplus
 set nostartofline
 set nofoldenable 
+set previewheight=30
 
 set hlsearch incsearch ignorecase smartcase
 nnoremap <esc> :noh<return><esc>
