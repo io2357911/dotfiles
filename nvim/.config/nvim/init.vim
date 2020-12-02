@@ -68,7 +68,7 @@ let g:plug_window='enew'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 noremap <M-1> :NERDTreeToggle<CR>
-noremap <M-2> :silent! :copen<CR>
+noremap <M-2> :silent! :botright copen<CR>
 
 autocmd FileType nerdtree,help setlocal number relativenumber
 

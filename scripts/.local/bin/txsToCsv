@@ -12,11 +12,11 @@ class Category:
 
 
 CAREGORY_MAP = {
-    Category.Shop: ['^BILLA.*', '^PYATEROCHKA.*', '^VKUSVILL.*', ".*KFC.*"],
+    Category.Shop: ['^BILLA.*', '^PYATEROCHKA.*', '^VKUSVILL.*', ".*KFC.*", "^SPAR.*"],
     Category.Network: ['Операция по e-mail/телефону', 'BEELINE'],
     Category.Drugs: ['APTECHNOE UCHREZHD-IE', 'APTEKA'],
     Category.Transport:
-    ['KOMSOMOLSKAYA', 'TRANSPORTTVER', 'OAO Moskovsko-Tverskaya PPK'],
+    ['KOMSOMOLSKAYA', 'TRANSPORTTVER', 'OAO Moskovsko-Tverskaya PPK', '.*MoscowTverPPC.*'],
 }
 
 EXCLUDE = ['Пополнение через банкомат', 'Снятие в банкомате']
