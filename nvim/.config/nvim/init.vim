@@ -10,7 +10,6 @@ set wildmenu wildmode=list,full
 set clipboard=unnamedplus
 set nostartofline
 set nofoldenable 
-set previewheight=30
 
 set hlsearch incsearch ignorecase smartcase
 nnoremap <esc> :noh<return><esc>
@@ -68,7 +67,7 @@ let g:plug_window='enew'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 noremap <M-1> :NERDTreeToggle<CR>
-noremap <M-2> :silent! :botright copen<CR>
+noremap <M-2> :silent! :botright copen \| :resize 12<CR>
 
 autocmd FileType nerdtree,help setlocal number relativenumber
 
@@ -143,7 +142,6 @@ let g:gutentags_ctags_exclude = ['tmp', 'output', 'build', 'package', 'node_modu
 
 Plug 'tpope/vim-fugitive'
 
-noremap <C-g>l :tab Git log --decorate --oneline --graph --pretty=format:"%h%x09%an%x09%ad%x09%s"<CR>
 noremap <C-g>s :tab Gstatus<CR>
 noremap <C-g>c :Gcommit<CR>
 noremap <C-g>p :Gpull<CR>
@@ -153,6 +151,8 @@ noremap <C-g>k :Git checkout
 noremap <C-g>K :Git checkout .<CR>
 noremap <C-g>h :Git stash<CR>
 noremap <C-g>H :Git stash pop<CR>
+noremap <C-g>m :.!git rev-parse --abbrev-ref HEAD<CR>
+noremap <C-g>l :tab Git log --decorate --oneline --graph --pretty=format:"%h%x09%an%x09%ad%x09%s"<CR>
 
 Plug 'airblade/vim-gitgutter'
 
@@ -207,16 +207,5 @@ noremap <M-3> :Toc<CR>
 Plug 'dense-analysis/ale'
 
 let g:ale_enabled = 0
-
-Plug 'easymotion/vim-easymotion'
-
-map  <space>j <Plug>(easymotion-bd-f)
-nmap <space>j <Plug>(easymotion-overwin-f)
-
-map <space>l <Plug>(easymotion-bd-jk)
-nmap <space>l <Plug>(easymotion-overwin-line)
-
-map <space>w <Plug>(easymotion-bd-w)
-nmap <space>w <Plug>(easymotion-overwin-w)
 
 call plug#end()
