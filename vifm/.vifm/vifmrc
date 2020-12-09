@@ -12,6 +12,9 @@ map b :bmarks<CR>
 map x :!!./%c<CR>
 map X :!./%c &<CR>
 
+" yank current file path into the clipboard
+nnoremap yf :!echo -n %c:p | xclip -selection clipboard %i<cr>:echo expand('%"c:p') "is yanked to clipboard"<cr>
+
 command vim nvim
 
 filetype *.jpg,*.jpeg,*.png,*.gif viewnior %f 2>/dev/null &

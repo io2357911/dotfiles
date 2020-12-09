@@ -67,7 +67,7 @@ let g:plug_window='enew'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 noremap <M-1> :NERDTreeToggle<CR>
-noremap <M-2> :silent! :botright copen \| :resize 12<CR>
+noremap <M-2> :silent! :botright copen \| :resize 10<CR>
 
 autocmd FileType nerdtree,help setlocal number relativenumber
 
@@ -170,11 +170,24 @@ let g:surround_{char2nr('*')} = "**\r**"
 
 Plug 'qpkorr/vim-bufkill'
 
+Plug 'morhetz/gruvbox'
+
+let g:gruvbox_guisp_fallback = 'bg'
+
+autocmd vimenter * ++nested colorscheme gruvbox
+
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-let g:airline_theme='base16_google'
+let g:airline_section_y = ''
+let g:airline_section_z = ''
+let g:airline_theme='gruvbox'
 let g:airline_detect_iminsert=1
+let g:airline#extensions#keymap#enabled = 0
+let g:airline#extensions#wordcount#enabled = 0
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#tabline#show_close_button = 0
 
 Plug 'nathanalderson/yang.vim'
 
