@@ -2,6 +2,7 @@ termite
 tmux
 htop
 nload
+bpytop
 vifm
 bash-completion
 stow

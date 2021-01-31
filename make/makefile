@@ -67,3 +67,6 @@ backup-list:
 	@PASSPHRASE=$(BACKUP_PASS) duplicity collection-status $(BACKUP_REMOTE_DIR)
 backup-restore:
 	@PASSPHRASE=$(BACKUP_PASS) duplicity --force -t $(BACKUP_DT) $(BACKUP_REMOTE_DIR) $(BACKUP_RESTORE_DIR)
+backup-rotate:
+	@PASSPHRASE=$(BACKUP_PASS) duplicity remove-older-than $(DT) --force $(BACKUP_REMOTE_DIR) 
+

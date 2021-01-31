@@ -12,14 +12,15 @@ class Category:
 
 
 CAREGORY_MAP = {
-    Category.Shop: ['^BILLA.*', '^PYATEROCHKA.*', '^VKUSVILL.*', ".*KFC.*", "^SPAR.*"],
-    Category.Network: ['Операция по e-mail/телефону', 'BEELINE'],
+    Category.Shop: ['BILLA', 'PYATEROCHKA', 'VKUSVILL', "KFC", "SPAR"],
+    Category.Network: ['Операция по e-mail/телефону', 'BEELINE', 'МТС'],
     Category.Drugs: ['APTECHNOE UCHREZHD-IE', 'APTEKA'],
     Category.Transport:
-    ['KOMSOMOLSKAYA', 'TRANSPORTTVER', 'OAO Moskovsko-Tverskaya PPK', '.*MoscowTverPPC.*'],
+    ['KOMSOMOLSKAYA', 'TRANSPORTTVER', 'OAO Moskovsko-Tverskaya PPK', 'MoscowTverPPC'],
 }
 
-EXCLUDE = ['Пополнение через банкомат', 'Снятие в банкомате']
+EXCLUDE = ['Пополнение через банкомат', 'Снятие в банкомате', 'Зачисление с накопительного счета',
+        'Минфин России', 'Зачисление вознаграждения', 'Перевод на накопительный счет ']
 
 
 def parseFloat(text):
@@ -47,9 +48,8 @@ def parseTransactions(filename):
 
 
 def match(details, exclude):
-    import re
     for pattern in exclude:
-        if re.match(pattern, details):
+        if details.find(pattern) != -1:
             return False
     return True
 
@@ -59,10 +59,9 @@ def filterTransactions(txs, exclude):
 
 
 def category(details, caretoryMap):
-    import re
     for category, patterns in caretoryMap.items():
         for pattern in patterns:
-            if re.match(pattern, details):
+            if details.find(pattern) != -1:
                 return category
     return Category.Misc
 
