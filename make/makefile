@@ -53,7 +53,7 @@ BACKUP_LOCAL_DIR?=~/luks
 BACKUP_REMOTE_DIR?=rclone://gdrive:/backups
 #BACKUP_REMOTE_DIR?=file:///tmp/backup
 BACKUP_RESTORE_DIR?=~/luks/backup
-BACKUP_PASS?=
+BACKUP_PASS=$(shell secret-tool lookup backup pass)
 BACKUP_DT?=0D
 #BACKUP_DT?=1M
 #BACKUP_DT?=2020-10-20
@@ -69,4 +69,3 @@ backup-restore:
 	@PASSPHRASE=$(BACKUP_PASS) duplicity --force -t $(BACKUP_DT) $(BACKUP_REMOTE_DIR) $(BACKUP_RESTORE_DIR)
 backup-rotate:
 	@PASSPHRASE=$(BACKUP_PASS) duplicity remove-older-than $(DT) --force $(BACKUP_REMOTE_DIR) 
-

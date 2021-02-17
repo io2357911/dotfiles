@@ -42,14 +42,18 @@ map <C-q> :tabc<CR>
 map <M-h> :tabm -1<CR>
 map <M-l> :tabm +1<CR>
 
-" paste markdown link from url in clipboard
+" paste a markdown link from a url in the clipboard
 
-noremap <C-c>l :call PasteMdLink()<CR>
+noremap <C-c>l :call PasteMdLink(CutLink(@+))<CR>
+noremap <C-c>L :call PasteMdLink(@+)<CR>
 
-function! PasteMdLink()
-    let url = @*
-    let title = system("echo -n $(wget -qO- '" . url . "' | perl -l -0777 -ne 'print $1 if /<title.*?>\\s*(.*?)\\s*<\\/title/si')")
-    exe "normal! a[" . title . "](" . url . ")\<Esc>"
+function! CutLink(url)
+    return system("echo -n $(cuttly.py '" . a:url . "')")
+endfunction
+
+function! PasteMdLink(url)
+    let title = system("echo -n $(wget -qO- '" . a:url . "' | perl -l -0777 -ne 'print $1 if /<title.*?>\\s*(.*?)\\s*<\\/title/si')")
+    exe "normal! a[" . title . "](" . a:url . ")\<Esc>"
 endfunction
 
 let data_path = stdpath('data')
@@ -203,7 +207,8 @@ noremap <C-m>m :MarkdownPreview<CR>
 noremap <C-m>s :MarkdownPreviewStop<CR>
 
 function! g:Open_browser(url)
-    silent exec "!chromium --new-window --app=" . a:url . " &"
+    silent exec "!firefox --new-window " . a:url . " &"
+    " silent exec "!chromium --new-window --app=" . a:url . " &"
 endfunction
 let g:mkdp_browserfunc = 'g:Open_browser'
 
