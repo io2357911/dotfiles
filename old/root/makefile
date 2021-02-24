@@ -107,3 +107,27 @@ sleep:
 
 reboot:
 	-systemctl reboot
+
+# luks
+
+LUKS_PART?=/dev/dummy
+LUKS_NAME?=luks
+LUKS_MOUNT?=$(LUKS_NAME)
+
+setup-luks:
+	sudo cryptsetup -y -v luksFormat $(LUKS_PART)
+	sudo cryptsetup luksOpen $(LUKS_PART) $(LUKS_NAME)
+	sudo mkfs.ext4 /dev/mapper/$(LUKS_NAME)
+	sudo mount /dev/mapper/$(LUKS_NAME) $(LUKS_MOUNT)
+	sudo chown -R $(USER):$(USER) $(LUKS_MOUNT)
+	sudo rm -rf $(LUKS_MOUNT)/lost+found
+	sudo umount $(LUKS_MOUNT)
+	sudo cryptsetup luksClose $(LUKS_NAME)
+mount-luks:
+	sudo cryptsetup luksOpen $(LUKS_PART) $(LUKS_NAME)
+	sudo mount /dev/mapper/$(LUKS_NAME) $(LUKS_MOUNT)
+	-sudo systemctl start syncthing@$(USER)
+umount-luks:
+	-sudo systemctl stop syncthing@$(USER)
+	sudo umount $(LUKS_MOUNT)
+	sudo cryptsetup luksClose $(LUKS_NAME)

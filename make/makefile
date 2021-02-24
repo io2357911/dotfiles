@@ -13,30 +13,6 @@ define smb_mount
 	@sudo mount -t cifs -o username=$1,password=$2,uid=io,gid=io //$3 $4
 endef
 
-# luks
-
-LUKS_PART?=/dev/dummy
-LUKS_NAME?=luks
-LUKS_MOUNT?=$(LUKS_NAME)
-
-setup-luks:
-	sudo cryptsetup -y -v luksFormat $(LUKS_PART)
-	sudo cryptsetup luksOpen $(LUKS_PART) $(LUKS_NAME)
-	sudo mkfs.ext4 /dev/mapper/$(LUKS_NAME)
-	sudo mount /dev/mapper/$(LUKS_NAME) $(LUKS_MOUNT)
-	sudo chown -R $(USER):$(USER) $(LUKS_MOUNT)
-	sudo rm -rf $(LUKS_MOUNT)/lost+found
-	sudo umount $(LUKS_MOUNT)
-	sudo cryptsetup luksClose $(LUKS_NAME)
-mount-luks:
-	sudo cryptsetup luksOpen $(LUKS_PART) $(LUKS_NAME)
-	sudo mount /dev/mapper/$(LUKS_NAME) $(LUKS_MOUNT)
-	-sudo systemctl start syncthing@$(USER)
-umount-luks:
-	-sudo systemctl stop syncthing@$(USER)
-	sudo umount $(LUKS_MOUNT)
-	sudo cryptsetup luksClose $(LUKS_NAME)
-
 # second monitor
 
 MONITOR_MAIN?=eDP1
@@ -48,11 +24,11 @@ monitor-down:
 
 # backup
 
-BACKUP_DIRS?=--include ~/luks/notes --include ~/luks/docs
-BACKUP_LOCAL_DIR?=~/luks
+BACKUP_DIRS?=--include ~/notes --include ~/docs
+BACKUP_LOCAL_DIR?=~
 BACKUP_REMOTE_DIR?=rclone://gdrive:/backups
 #BACKUP_REMOTE_DIR?=file:///tmp/backup
-BACKUP_RESTORE_DIR?=~/luks/backup
+BACKUP_RESTORE_DIR?=backup
 BACKUP_PASS=$(shell secret-tool lookup backup pass)
 BACKUP_DT?=0D
 #BACKUP_DT?=1M

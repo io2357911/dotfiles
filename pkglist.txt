@@ -18,6 +18,7 @@ gcc
 make
 cmake
 
+firefox
 chromium
 
 zathura
@@ -29,4 +30,4 @@ virtualbox-guest-iso
 rclone
 duplicity
 syncthing
-cryptsetup
+seahorse

@@ -44,12 +44,7 @@ map <M-l> :tabm +1<CR>
 
 " paste a markdown link from a url in the clipboard
 
-noremap <C-c>l :call PasteMdLink(CutLink(@+))<CR>
-noremap <C-c>L :call PasteMdLink(@+)<CR>
-
-function! CutLink(url)
-    return system("echo -n $(cuttly.py '" . a:url . "')")
-endfunction
+noremap <C-c>l :call PasteMdLink(@+)<CR>
 
 function! PasteMdLink(url)
     let title = system("echo -n $(wget -qO- '" . a:url . "' | perl -l -0777 -ne 'print $1 if /<title.*?>\\s*(.*?)\\s*<\\/title/si')")
@@ -147,9 +142,9 @@ let g:gutentags_ctags_exclude = ['tmp', 'output', 'build', 'package', 'node_modu
 Plug 'tpope/vim-fugitive'
 
 noremap <C-g>s :tab Gstatus<CR>
-noremap <C-g>c :Gcommit<CR>
-noremap <C-g>p :Gpull<CR>
-noremap <C-g>P :Gpush origin 
+noremap <C-g>c :Git commit<CR>
+noremap <C-g>p :Git pull<CR>
+noremap <C-g>P :Git push origin 
 noremap <C-g>r :Git rebase 
 noremap <C-g>k :Git checkout 
 noremap <C-g>K :Git checkout .<CR>
@@ -215,6 +210,7 @@ let g:mkdp_browserfunc = 'g:Open_browser'
 Plug 'plasticboy/vim-markdown'
 
 let g:vim_markdown_math = 1
+let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_new_list_item_indent = 0
 let g:vim_markdown_conceal_code_blocks = 0
 let g:vim_markdown_toc_autofit = 1
