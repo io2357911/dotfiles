@@ -1,4 +1,6 @@
-all: cfg-keyboard
+all: cfg-keyboard stow
+
+stow:
 	@stow -v \
 		idea \
 		make \
@@ -6,6 +8,7 @@ all: cfg-keyboard
 		termite \
 		tmux \
 		vifm \
+		mpv \
 		zathura \
 		scripts
 
