@@ -1,5 +1,4 @@
 setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab autoindent smartindent
-
 setlocal foldmethod=indent
 
 " ale
@@ -7,9 +6,10 @@ setlocal foldmethod=indent
 let g:ale_enabled = 0
 let b:ale_linters = ['flake8', 'pylint']
 let b:ale_fixers = ['yapf']
+let g:ale_python_flake8_options = '--ignore=E305'
 let g:ale_python_pylint_options = '-E'
 "let g:ale_fix_on_save = 1
 
-noremap <buffer> <C-c>f :ALEFix<CR>
-noremap <buffer> <C-c>e :ALEEnable<CR>
-noremap <buffer> <C-c>d :ALEDisable<CR>
+noremap <buffer> <leader>cf :ALEFix<CR>
+noremap <buffer> <leader>ce :ALEEnable<CR>
+noremap <buffer> <leader>cd :ALEDisable<CR>

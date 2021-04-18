@@ -9,10 +9,10 @@ set linebreak
 set wildmenu wildmode=list,full
 set clipboard=unnamedplus
 set nostartofline
+set foldmethod=syntax
 set nofoldenable 
-
 set hlsearch incsearch ignorecase smartcase
-nnoremap <esc> :noh<return><esc>
+let mapleader = " "
 
 " use multiple languages
 
@@ -38,9 +38,24 @@ endfunction
 map <C-h> :tabp<CR>
 map <C-l> :tabn<CR>
 map <C-q> :tabc<CR>
-
 map <M-h> :tabm -1<CR>
 map <M-l> :tabm +1<CR>
+
+" termdebug
+
+tnoremap <leader>q <C-\><C-N>
+noremap <leader>dd :packadd termdebug \| tabnew \| Termdebug<CR>
+noremap <leader>dg :Gdb<CR>
+noremap <leader>dp :Program<CR>
+noremap <leader>ds :Source<CR>
+noremap <leader>dr :Run<CR>
+noremap <leader>dc :Continue<CR>
+noremap <leader>db :Break<CR>
+noremap <leader>dB :Clear<CR>
+noremap <leader>dn :Over<CR>
+noremap <leader>dN :Step<CR>
+noremap <leader>de :Eval 
+vnoremap <leader>de :Eval<CR>
 
 " paste a markdown link from a url in the clipboard
 
@@ -51,14 +66,20 @@ function! PasteMdLink(url)
     exe "normal! a[" . title . "](" . a:url . ")\<Esc>"
 endfunction
 
-let data_path = stdpath('data')
+" misc
+
+nnoremap <esc> :noh<return><esc>
 
 " swp directory
+
+let data_path = stdpath('data')
+
 let &backupdir = data_path . '/'
 let &directory = data_path . '/'
 let &undodir = data_path . '/'
 
 " vim-plug
+
 call plug#begin(data_path . '/plugged')
 
 let g:plug_window='enew'
@@ -72,10 +93,10 @@ autocmd FileType nerdtree,help setlocal number relativenumber
 
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clangd-completer', 'on': 'YcmRestartServer' }
 
-noremap <C-c>r :YcmRestartServer<CR>
-noremap <C-c>f :YcmCompleter FixIt<CR>
-noremap <C-c>t :YcmCompleter GetType<CR>
-noremap <C-j> :YcmCompleter GoTo<CR>
+noremap <leader>cr :YcmRestartServer<CR>
+noremap <leader>cf :YcmCompleter FixIt<CR>
+noremap <leader>ct :YcmCompleter GetType<CR>
+noremap <leader>j :YcmCompleter GoTo<CR>
 
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_confirm_extra_conf = 0
@@ -87,40 +108,34 @@ autocmd FileType c,cpp setlocal commentstring=//\ %s
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-noremap <C-f> <CR>
-noremap <C-f>f :Files<CR>
-
-noremap <C-f>j :BTags<CR>
-
-noremap <C-f>t yiw \| :Tags <C-r>"<CR>
-noremap <C-f>T :Tags<CR>
-
-noremap <C-f>b :Buffers<CR>
-noremap <C-f>m :Marks<CR>
-
-noremap <C-f>a yiw \| :Ag <C-r>"<CR>
-noremap <C-f>A :Ag<CR>
-
-noremap <C-f>l :BLines<CR>
+" noremap <C-f> <CR>
+noremap <leader>ff :Files<CR>
+noremap <leader>fj :BTags<CR>
+noremap <leader>ft yiw \| :Tags <C-r>"<CR>
+noremap <leader>fT :Tags<CR>
+noremap <leader>fb :Buffers<CR>
+noremap <leader>fm :Marks<CR>
+noremap <leader>fa yiw \| :Ag <C-r>"<CR>
+noremap <leader>fA :Ag<CR>
+noremap <leader>fl :BLines<CR>
 
 Plug 'rhysd/vim-clang-format'
 
-noremap <C-c>e :ClangFormatAutoEnable<CR>
-noremap <C-c>d :ClangFormatAutoDisable<CR>
+noremap <leader>ce :ClangFormatAutoEnable<CR>
+noremap <leader>cd :ClangFormatAutoDisable<CR>
 
 Plug 'skywind3000/asyncrun.vim'
 
-noremap <C-m>e :AsyncRun 
-noremap <C-m>a :AsyncRun make<CR>
-noremap <C-m>c :AsyncRun make clean<CR>
-noremap <C-m>w :w \| AsyncRun make<CR>
-noremap <C-m>r :AsyncRun make 
-noremap <C-m>i :w \| :AsyncRun make 
-noremap <C-m>l :silent! :tab copen<CR>
-noremap <C-m>t :GutentagsUpdate!<CR>
-noremap <C-m>b :let @+ = 'b ' . expand('%:t') . ':' . line('.')<CR>
-noremap <C-m>k :AsyncStop!<CR>
-"noremap <C-m>b :let @+ = 'b ' . expand('%:p') . ':' . line('.')<CR>
+noremap <leader>me :AsyncRun 
+noremap <leader>ma :AsyncRun make<CR>
+noremap <leader>mc :AsyncRun make clean<CR>
+noremap <leader>mw :w \| AsyncRun make<CR>
+noremap <leader>mr :AsyncRun make 
+noremap <leader>mi :w \| :AsyncRun make 
+noremap <leader>ml :silent! :tab copen<CR>
+noremap <leader>mt :GutentagsUpdate!<CR>
+noremap <leader>mb :let @+ = 'b ' . expand('%:t') . ':' . line('.')<CR>
+noremap <leader>mk :AsyncStop!<CR>
 
 " cooperate with vim-fugitive
 command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
@@ -132,36 +147,31 @@ let g:ctrlsf_confirm_save = 0
 let g:ctrlsf_auto_focus = {
     \ "at": "start"
     \ }
-noremap <C-c>s yiw \| :CtrlSF <C-r>"<CR>
+noremap <leader>cs yiw \| :CtrlSF <C-r>"<CR>
 
 Plug 'ludovicchabant/vim-gutentags'
 
 let g:gutentags_cache_dir = data_path
-let g:gutentags_ctags_exclude = ['tmp', 'output', 'build', 'package', 'node_modules']
+let g:gutentags_exclude_filetypes = ['markdown']
+let g:gutentags_ctags_exclude = ['tmp', 'output*', 'build', 'package', 'node_modules']
 
 Plug 'tpope/vim-fugitive'
 
-noremap <C-g>s :tab Gstatus<CR>
-noremap <C-g>c :Git commit<CR>
-noremap <C-g>p :Git pull<CR>
-noremap <C-g>P :Git push origin 
-noremap <C-g>r :Git rebase 
-noremap <C-g>k :Git checkout 
-noremap <C-g>K :Git checkout .<CR>
-noremap <C-g>h :Git stash<CR>
-noremap <C-g>H :Git stash pop<CR>
-noremap <C-g>m :.!git rev-parse --abbrev-ref HEAD<CR>
-noremap <C-g>l :tab Git log --decorate --oneline --graph --pretty=format:"%h%x09%an%x09%ad%x09%s"<CR>
+noremap <leader>gs :tab Gstatus<CR>
+noremap <leader>gc :Git commit<CR>
+noremap <leader>gp :Git pull<CR>
+noremap <leader>gP :Git push origin 
+noremap <leader>gr :Git rebase 
+noremap <leader>gk :Git checkout 
+noremap <leader>gK :Git checkout .<CR>
+noremap <leader>gh :Git stash<CR>
+noremap <leader>gH :Git stash pop<CR>
+noremap <leader>gm :.!git rev-parse --abbrev-ref HEAD<CR>
+noremap <leader>gl :tab Git log --decorate --oneline --graph --pretty=format:"%h%x09%an%x09%ad%x09%s"<CR>
 
 Plug 'airblade/vim-gitgutter'
 
 set updatetime=100
-
-Plug 'sakhnik/nvim-gdb', { 'do': ':UpdateRemotePlugins' }
-
-noremap <C-k>o :GdbStart gdb<CR>
-noremap <C-k>b :GdbBreakpointToggle<CR>
-noremap <C-k>c :GdbContinue<CR>
 
 Plug 'tpope/vim-surround'
 
@@ -198,8 +208,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 
 let g:mkdp_auto_close = 0
 
-noremap <C-m>m :MarkdownPreview<CR>
-noremap <C-m>s :MarkdownPreviewStop<CR>
+noremap <leader>cm :MarkdownPreview<CR>
+noremap <leader>cM :MarkdownPreviewStop<CR>
 
 function! g:Open_browser(url)
     silent exec "!firefox --new-window " . a:url . " &"
