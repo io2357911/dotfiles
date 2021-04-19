@@ -12,6 +12,9 @@ set nostartofline
 set foldmethod=syntax
 set nofoldenable 
 set hlsearch incsearch ignorecase smartcase
+set nobackup
+set nowritebackup
+
 let mapleader = " "
 
 " use multiple languages
@@ -59,7 +62,7 @@ vnoremap <leader>de :Eval<CR>
 
 " paste a markdown link from a url in the clipboard
 
-noremap <C-c>l :call PasteMdLink(@+)<CR>
+noremap <leader>cl :call PasteMdLink(@+)<CR>
 
 function! PasteMdLink(url)
     let title = system("echo -n $(wget -qO- '" . a:url . "' | perl -l -0777 -ne 'print $1 if /<title.*?>\\s*(.*?)\\s*<\\/title/si')")
@@ -231,5 +234,7 @@ noremap <M-3> :Toc<CR>
 Plug 'dense-analysis/ale'
 
 let g:ale_enabled = 0
+
+Plug 'puremourning/vimspector'
 
 call plug#end()
