@@ -13,14 +13,3 @@ let g:ale_python_pylint_options = '-E'
 noremap <buffer> <leader>cf :ALEFix<CR>
 noremap <buffer> <leader>ce :ALEEnable<CR>
 noremap <buffer> <leader>cd :ALEDisable<CR>
-
-" vimspector
-
-noremap <leader>dd :call vimspector#Restart()<CR>
-noremap <leader>dD :VimspectorReset<CR>
-noremap <leader>dc :call vimspector#Continue()<CR>
-noremap <leader>db :call vimspector#ToggleBreakpoint()<CR>
-noremap <leader>dn :call vimspector#StepOver()<CR>
-noremap <leader>dN :call vimspector#StepInto()<CR>
-noremap <leader>dp :call vimspector#RunToCursor()<CR>
-noremap <leader>ds :call vimspector#Stop()<CR>

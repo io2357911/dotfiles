@@ -47,18 +47,18 @@ map <M-l> :tabm +1<CR>
 " termdebug
 
 tnoremap <leader>q <C-\><C-N>
-noremap <leader>dd :packadd termdebug \| tabnew \| Termdebug<CR>
-noremap <leader>dg :Gdb<CR>
-noremap <leader>dp :Program<CR>
-noremap <leader>ds :Source<CR>
-noremap <leader>dr :Run<CR>
-noremap <leader>dc :Continue<CR>
-noremap <leader>db :Break<CR>
-noremap <leader>dB :Clear<CR>
-noremap <leader>dn :Over<CR>
-noremap <leader>dN :Step<CR>
-noremap <leader>de :Eval 
-vnoremap <leader>de :Eval<CR>
+noremap <leader>td :packadd termdebug \| tabnew \| Termdebug<CR>
+noremap <leader>tg :Gdb<CR>
+noremap <leader>tp :Program<CR>
+noremap <leader>ts :Source<CR>
+noremap <leader>tr :Run<CR>
+noremap <leader>tc :Continue<CR>
+noremap <leader>tb :Break<CR>
+noremap <leader>tB :Clear<CR>
+noremap <leader>tn :Over<CR>
+noremap <leader>tN :Step<CR>
+noremap <leader>te :Eval 
+vnoremap <leader>te :Eval<CR>
 
 " paste a markdown link from a url in the clipboard
 
@@ -222,7 +222,7 @@ let g:mkdp_browserfunc = 'g:Open_browser'
 
 Plug 'plasticboy/vim-markdown'
 
-let g:vim_markdown_math = 1
+let g:vim_markdown_math = 0
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_new_list_item_indent = 0
 let g:vim_markdown_conceal_code_blocks = 0
@@ -236,5 +236,16 @@ Plug 'dense-analysis/ale'
 let g:ale_enabled = 0
 
 Plug 'puremourning/vimspector'
+
+noremap <leader>dd :call vimspector#Restart()<CR>
+noremap <leader>dD :VimspectorReset<CR>
+noremap <leader>dj :call vimspector#RunToCursor()<CR>
+noremap <leader>db :call vimspector#ToggleBreakpoint()<CR>
+noremap <leader>dc :call vimspector#Continue()<CR>
+noremap <leader>dp :call vimspector#Pause()<CR>
+noremap <leader>dn :call vimspector#StepOver()<CR>
+noremap <leader>dN :call vimspector#StepInto()<CR>
+noremap <leader>ds :call vimspector#Stop()<CR>
+noremap <leader>de :VimspectorEval 
 
 call plug#end()
