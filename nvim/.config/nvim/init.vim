@@ -60,6 +60,26 @@ noremap <leader>tN :Step<CR>
 noremap <leader>te :Eval 
 vnoremap <leader>te :Eval<CR>
 
+" fix WSL clipboard
+" Copy https://github.com/equalsraf/win32yank to ~/.local/bin
+if has("unix")
+    let lines = readfile("/proc/version")
+    if lines[0] =~ "Microsoft"
+        let g:clipboard = {
+                  \   'name': 'win32yank-wsl',
+                  \   'copy': {
+                  \      '+': 'win32yank.exe -i --crlf',
+                  \      '*': 'win32yank.exe -i --crlf',
+                  \    },
+                  \   'paste': {
+                  \      '+': 'win32yank.exe -o --lf',
+                  \      '*': 'win32yank.exe -o --lf',
+                  \   },
+                  \   'cache_enabled': 0,
+                  \ }
+    endif
+endif
+
 " paste a markdown link from a url in the clipboard
 
 noremap <leader>cl :call PasteMdLink(@+)<CR>
