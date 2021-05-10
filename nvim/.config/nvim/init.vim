@@ -180,7 +180,7 @@ let g:gutentags_ctags_exclude = ['tmp', 'output*', 'build', 'package', 'node_mod
 
 Plug 'tpope/vim-fugitive'
 
-noremap <leader>gs :tab Gstatus<CR>
+noremap <leader>gs :tab Git<CR>
 noremap <leader>gc :Git commit<CR>
 noremap <leader>gp :Git pull<CR>
 noremap <leader>gP :Git push origin 
@@ -220,6 +220,7 @@ let g:airline#extensions#wordcount#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#show_close_button = 0
+let g:airline#extensions#tabline#show_buffers = 0
 
 Plug 'nathanalderson/yang.vim'
 
