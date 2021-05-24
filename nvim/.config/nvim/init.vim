@@ -60,26 +60,6 @@ noremap <leader>tN :Step<CR>
 noremap <leader>te :Eval 
 vnoremap <leader>te :Eval<CR>
 
-" fix WSL clipboard
-" Copy https://github.com/equalsraf/win32yank to ~/.local/bin
-if has("unix")
-    let lines = readfile("/proc/version")
-    if lines[0] =~ "Microsoft"
-        let g:clipboard = {
-                  \   'name': 'win32yank-wsl',
-                  \   'copy': {
-                  \      '+': 'win32yank.exe -i --crlf',
-                  \      '*': 'win32yank.exe -i --crlf',
-                  \    },
-                  \   'paste': {
-                  \      '+': 'win32yank.exe -o --lf',
-                  \      '*': 'win32yank.exe -o --lf',
-                  \   },
-                  \   'cache_enabled': 0,
-                  \ }
-    endif
-endif
-
 " paste a markdown link from a url in the clipboard
 
 noremap <leader>cl :call PasteMdLink(@+)<CR>
@@ -92,6 +72,7 @@ endfunction
 " misc
 
 nnoremap <esc> :noh<return><esc>
+nnoremap <leader>cw :setlocal wrap!<CR>
 
 " swp directory
 
@@ -120,6 +101,7 @@ noremap <leader>cr :YcmRestartServer<CR>
 noremap <leader>cf :YcmCompleter FixIt<CR>
 noremap <leader>ct :YcmCompleter GetType<CR>
 noremap <leader>j :YcmCompleter GoTo<CR>
+noremap <leader>cj :%!python -m json.tool<CR>
 
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_confirm_extra_conf = 0
@@ -220,6 +202,7 @@ let g:airline#extensions#wordcount#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#show_close_button = 0
+let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#show_buffers = 0
 
 Plug 'nathanalderson/yang.vim'
