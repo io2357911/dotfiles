@@ -24,6 +24,11 @@ map <leader>dn :action StepOver<CR>
 map <leader>dN :action StepInto<CR>
 map <leader>db :action ToggleLineBreakpoint<CR>
 
+" search
+
+map <leader>fa :action FindUsages<CR>
+map <leader>fA :action FindInPath<CR>
+
 " tabs
 
 map <C-l> :tabnext<CR>
