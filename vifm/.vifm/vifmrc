@@ -16,6 +16,8 @@ map X :!./%c &<CR>
 nnoremap yf :!echo -n %c:p | xclip -selection clipboard %i<cr>:echo expand('%"c:p') "is yanked to clipboard"<cr>
 
 command vim nvim
+command cmd !cmd.exe
+command psh !powershell.exe
 
 filetype *.jpg,*.jpeg,*.png,*.gif viewnior %f 2>/dev/null &
 filetype *.mkv,*mp4 mpv %f 2>/dev/null &

@@ -213,6 +213,7 @@ let g:rainbow_active = 1
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
+let g:mkdp_open_to_the_world = 1
 let g:mkdp_auto_close = 0
 
 noremap <leader>cm :MarkdownPreview<CR>
